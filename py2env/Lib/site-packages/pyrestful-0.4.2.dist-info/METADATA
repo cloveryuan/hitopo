@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: pyrestful
+Version: 0.4.2
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: Innovaser
+Author-email: rancavil@innovaser.cl
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: tornado
+Requires-Dist: pyconvert
+
+UNKNOWN
+
+

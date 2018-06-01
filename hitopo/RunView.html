@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>运行环境</title>
+    <style type="text/css">
+        html, body {
+            padding: 0;
+            margin: 0;
+        }
+        /* body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";} */
+        .main {
+            margin: 0;
+            padding: 0;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=EvDfuQcuIqbR8euPlEw0r1RQyxPV5K3u"></script>
+    <!-- ak:qEylgqjCR5LKPK0X3QP6FNv7ZQYfLUA9 -->
+    <link href="styles/jquery.mloading.css" rel="stylesheet"/>
+    <script type="text/javascript">
+        htconfig = {
+            Color: {
+                titleBackground: '#076186',
+                titleIconBackground: 'white',
+                headerBackground: '#DAECF4',
+                highlight: '#4183C4'
+            },
+            Default: {
+                'zoomMax':0.9,
+                'zoomMin': 0.9,
+                'zoomIncrement': 0,//调用zoomIn和zoomOut函数的缩放步进
+                'pinchZoomIncrement': 0//触屏双指缩放步进
+            },
+            Style: {
+                'select.color': '#000000',
+                'select.width': 0
+            },
+            dataRate: 1000,
+            animRate: 500,
+            autoSize: true,
+        };
+        var ie = false;
+        var userAgent = navigator.userAgent.toLowerCase();
+        if (userAgent.indexOf("msie") > -1 || userAgent.indexOf("rv:11") > -1) {
+            ie = true;
+        }
+        var layers = ['backgroundLayer', 'nodeLayer', 'textLayer'];
+        var filename = "", paramname = "", filejson = {};
+        var baiduMap = false;
+        var lonLatNode = false;//是否转换Node位置到经纬度
+    
+
+        var sys_blink = false;
+        var dm = null;
+        var tagsDialog = null;
+        var playbackView = null;
+        var updateTimerID = -1;
+        var animTimerID = -1;
+        var iframe = false;
+        var querystring = Array();      
+    </script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/core/ht.js"></script>
+    <script type="text/javascript" src="lib/plugin/ht-cssanimation.js"></script>
+    <script type="text/javascript" src="lib/plugin/ht-form.js"></script>
+    <script type="text/javascript" src="lib/plugin/ht-dialog.js"></script>
+    <script type="text/javascript" src="lib/plugin/ht-palette.js"></script>
+    <script type="text/javascript" src="lib/plugin/ht-contextmenu.js"></script>
+    <script type="text/javascript" src="lib/plugin/ht-menu.js"></script>
+    <script type="text/javascript" src="lib/plugin/ht-panel.js"></script>
+    <script type="text/javascript" src="lib/control.js"></script>
+    <script type="text/javascript" src="lib/plugin/ht-live.js"></script>
+    <script type="text/javascript" src="lib/plugin/ht-htmlnode.js"></script>
+    <script type="text/javascript" src="js/jquery.mloading.js"></script>
+    <script type="text/javascript" src="lib/scada.js"></script>
+    <!-- <script type="text/javascript" src="lib/runtime-38.js"></script> -->
+    <script type="text/javascript" src="lib/runtimev38.js"></script>
+    <!-- <script src="js/bmap.js"></script>地图 -->
+
+    <!--head global script-->
+    #{ pyVars.headHtml }
+
+    <script type='text/javascript'>
+        username = '';
+        userid = 0;
+        userlevel = 0;
+        userarea = 0;
+        querystring['filename'] = '#{pyVars.title}';
+        filename = '#{pyVars.filename}';
+        htconfig.dataRate = #{pyVars.dataRate};//数据更新
+        htconfig.animRate = #{pyVars.animRate};//动画时间
+        // htconfig.Default.zoomMin = #{pyVars.zoomMin};
+        // htconfig.Default.zoomMax = #{pyVars.zoomMax};
+        htconfig.autoSize = '#{pyVars.autoSize}';
+        isPannable = false;
+        isMovable = false;
+        layers = ['backgroundLayer', 'nodeLayer', 'textLayer', 'l4', 'l5', 'l6', 'l7', 'l8'];
+        filejson = #{pyVars.json};
+    </script>
+</head>
+<body onload="init();">
+</body>
+</html>

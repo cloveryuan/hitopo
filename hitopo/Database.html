@@ -1,0 +1,40 @@
+﻿<!-- 标签数据库 -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="styles/style1.css" rel="stylesheet" />
+    <title>标签数据库一览表</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <table width="100%">
+            <tr width="100%">
+                <td witdh="100">[ <asp:Literal ID="datainfo" runat="server"></asp:Literal> ]</td>
+                <td align="right">
+                   [ <asp:HyperLink ID="pre" runat="server">上一页</asp:HyperLink>&nbsp;&nbsp;
+                    <asp:HyperLink ID="next" runat="server">下一页</asp:HyperLink> &nbsp;]
+                </td>
+            </tr>
+        </table>
+        <table class="bordered" width="100%">
+            <tr>
+                <th width="5%">序号</th>
+                <th width="5%">驱动</th>
+                <th width="15%">名称</th>
+                <th width="5%">类型</th>
+                <th width="15%">值</th>
+                <th width="5%">状态</th>
+                <th width="5%">单位</th>
+                <th width="5%">下限</th>
+                <th width="5%">上限</th>
+                <th width="5%">归档</th>
+                <th width="15%">报警</th>
+                <th width="15%">描述</th>
+            </tr>
+            <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+        </table>
+
+    </form>
+</body>
+</html>

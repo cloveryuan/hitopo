@@ -1,0 +1,68 @@
+﻿html, body {
+    padding: 0;
+    margin: 0;
+}
+
+.main {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.ht-widget-menu {
+    background: -webkit-linear-gradient(top, rgb(250,252,253), rgb(232,241,251) 40%,rgb(220,230,243) 40%,rgb(220,231,245)) !important;
+    background: linear-gradient(to bottom, rgb(250,252,253), rgb(232,241,251) 40%,rgb(220,230,243) 40%,rgb(220,231,245)) !important;
+}
+
+.ht-widget-dropdownmenu ul {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAABAQMAAADO7O3JAAAAA3NCSVQICAjb4U/gAAAABlBMVEXi4+P///9V63aNAAAACXBIWXMAAAsSAAALEgHS3X78AAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M1cbXjNgAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNy8wNi8xMZANh+UAAAAKSURBVAiZY3AAAABCAEGV6TQ4AAAAAElFTkSuQmCC") repeat-y rgb(240, 240, 240) !important;
+    background-position: -webkit-calc(1.4em + 4px) 0px !important;
+    background-position: calc(1.4em + 4px) 0px !important;
+    border-radius: 0 !important;
+}
+
+.ht-widget-dropdownmenu .menu-item {
+    background: rgba(0,0,0,0) !important;
+    color: black !important;
+    border: 1px solid rgba(0,0,0,0) !important;
+    border-radius: 2px !important;
+    margin: 3px 2px !important;
+}
+
+    .ht-widget-dropdownmenu .menu-item.menu-item-hover {
+        background: -webkit-linear-gradient(top, rgba(193,222,255,0.2),rgba(193,222,255,0.4)) !important;
+        background: linear-gradient(to bottom, rgba(193,222,255,0.2),rgba(193,222,255,0.4)) !important;
+        color: black !important;
+        border: 1px solid rgb(183,212,246) !important;
+    }
+
+    .ht-widget-dropdownmenu .menu-item.disabled {
+        color: #888 !important;
+        background: rgba(0,0,0,0) !important;
+    }
+
+        .ht-widget-dropdownmenu .menu-item.disabled.menu-item-hover {
+            color: #888 !important;
+            background: rgba(0,0,0,0) !important;
+            border: 1px solid rgba(0,0,0,0) !important;
+        }
+
+.ht-widget-dropdownmenu .prefix {
+    margin-right: 0.8em !important;
+}
+
+.ht-widget-dropdownmenu .suffix {
+    margin-left: 3em !important;
+    margin-right: 1em !important;
+}
+
+.ht-widget-dropdownmenu .separator {
+    margin-left: -webkit-calc(1.4em + 5px) !important;
+    margin-left: calc(1.4em + 5px) !important;
+    height: 2px !important;
+    background-image: -webkit-linear-gradient(top, rgb(226,226,226), rgb(226,226,226) 50%,rgb(252,252,252) 50%,rgb(252,252,252)) !important;
+    background-image: linear-gradient(to bottom, rgb(226,226,226), rgb(226,226,226) 50%,rgb(252,252,252) 50%,rgb(252,252,252)) !important;
+}

@@ -1,0 +1,23 @@
+﻿body {
+    font-family: "微软雅黑","宋体","Verdana","Arial";
+    font-size: 16px;
+}
+
+A {
+    COLOR: blue;
+    FONT-STYLE: normal;
+    TEXT-DECORATION: none;
+}
+
+    A:hover {
+        COLOR: blue;
+        TEXT-DECORATION: none;
+    }
+
+P {
+    FONT-SIZE: 12pt;
+}
+
+LI {
+    FONT-SIZE: 12pt;
+}
