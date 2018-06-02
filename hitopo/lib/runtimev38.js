@@ -504,7 +504,7 @@ function playbackpane_init() {
         e = a.getFullYear().toString() + "-" + ("0" + (a.getMonth() + 1).toString()).slice(-2) + "-" + ("0" + a.getDate().toString()).slice(-2),
         t = a.getHours().toString() + ":00:00", 
         n = a.getHours().toString() + ":30:00";
-        console.log(e,t,n)
+       
     playbackpane = new ht.widget.FormPane, 
     playbackpane.setRowHeight(25), 
     playbackpane.getLabelFont = function (a) {
@@ -579,7 +579,8 @@ function playbackpane_init() {
                                         _playbackEnd = o;
                                         var r = new Date(_playbackStart),
                                             s = r.getFullYear().toString() + "/" + (r.getMonth() + 1).toString() + "/" + r.getDate().toString() + " " + r.getHours().toString() + ":" + r.getMinutes().toString() + ":" + r.getSeconds().toString();
-                                        queryPlayData(_playbackTags, i, s, 1)
+                                        // queryPlayData(_playbackTags, i, s, 1)    
+                                        queryPlayData(_playbackTags, i, l, 1)
                                     } 
                                 }
                             }else{
@@ -612,7 +613,7 @@ function playbackpane_init() {
         "播放速率:", 
         {
             id: "playRate",
-            comboBox: {labels: ["1X", "2X", "4X", "5X", "10X", "20X"], values: [1e3, 500, 250, 200, 100, 50], value: 1e3}
+            comboBox: {labels: ["1X", "2X", "4X", "5X", "10X", "20X"], values: [1e3, 500, 250, 200, 100, 50],  value: 1e3}
         }, 
         {}, 
         {
@@ -640,7 +641,9 @@ function playbackpane_init() {
                 label: "关闭", 
                 icon: "", 
                 onClicked: function () {
-                    updateTimerID >= 0 && (clearInterval(updateTimerID), updateTimerID = -1), _playbackstoped = true, _playbackDataList.clear(), 
+                    updateTimerID >= 0 && (clearInterval(updateTimerID), updateTimerID = -1), 
+                    _playbackstoped = true, 
+                    _playbackDataList.clear(), 
                     _currentPlaybackIndex = 0, 
                     _currentPlaybackdata = null, 
                     _playbackStart = 0, 
@@ -687,7 +690,7 @@ function updatePlaybackTitle(a) {
     }
 }
 
-// 重置历史回放控制面板
+//点击右键历史回放
 function resetPlaybackView() {
     _playbackstoped = true;
     updatePlaybackTitle();
@@ -738,6 +741,7 @@ function update_scada() {
         _tagschanged = flase
     };
     _updating = true;
+    // console.log(ioerror)
      $.ajax({
         type: "POST",
         url: "server/scada/getvalues.ashx",
@@ -907,9 +911,11 @@ function update_scada() {
                     r && r();
                     var s = new ht.List;
                     updateList.each(function (a) {
-                        var e = false, t = a.a("tagname");
+                        var e = false, 
+                            t = a.a("tagname");
                         if (t) {
-                            t = t.toUpperCase(), s.clear();
+                            t = t.toUpperCase(), 
+                            s.clear();
                             var n = db[t];
                             for (n ? (a.tag || (a.tag = n), s.add(n.value), n.changed && (e = true, n.changed = false)) : s.add(null), l = 1; l < 10; l++) (t = a.a("tagname" + l)) ? (t = t.toUpperCase(), (n = db[t]) ? (a["tag" + l] || (a["tag" + l] = n), s.add(n.value), n.changed && (e = true, n.changed = false)) : s.add(null)) : s.add(null);
                             var i = s.toArray();
@@ -936,11 +942,12 @@ function update_scada() {
             } else location.href = "login.html"
         },
         error: function () {
+            console.log('请求不成功，无法点击g2d')
             if (!ioerror) {
                 ioerror = true;
                 var a = (new Date).Format("yyyy-MM-dd hh:mm:ss");
                 db.IOERROR.time = a, 
-                db.IOERROR.value = true, 
+                db.IOERROR.value = true
                 g2d.setDisabled(true)
             }
             contextid = "", 
@@ -1024,17 +1031,28 @@ function viewCurrentTags() {
             }
         }
         var c = n.getTableHeader();
-        c.setColumnLineColor("#C8C8C8"), c.setInsertColor("#6DCDF3"), c.getLabelFont = function (a) {
+        c.setColumnLineColor("#C8C8C8"), 
+        c.setInsertColor("#6DCDF3"), 
+        c.getLabelFont = function (a) {
             return "bold 12px Arial"
-        }, c.getView().style.background = "#F1F1F1";
+        }, 
+        c.getView().style.background = "#F1F1F1";
         var g = n.getTableView();
-        g.setSelectBackground("#E1E1E1"), g.setRowLineColor("#EDEDED"), g.setColumnLineVisible(false), g.setRowHeight(22), g.setAutoHideScrollBar(false), g.setLabelSelectColor("blue"), g.drawRowBackground = function (a, e, t, n, i, l, d) {
+        g.setSelectBackground("#E1E1E1"), 
+        g.setRowLineColor("#EDEDED"), 
+        g.setColumnLineVisible(false), 
+        g.setRowHeight(22), 
+        g.setAutoHideScrollBar(false), 
+        g.setLabelSelectColor("blue"), 
+        g.drawRowBackground = function (a, e, t, n, i, l, d) {
             1 == e.a("status") ? a.fillStyle = "#FAFAFA" : a.fillStyle = "#FF00FF", a.beginPath(), a.rect(n, i, l, d), a.fill()
-        }, a.getView().style.background = "#E1E1E1";
+        }, 
+        a.getView().style.background = "#E1E1E1";
         var u = a.getItemById("tagname").element;
         u.getElement().onkeyup = function (a) {
             27 === a.keyCode && (u.getElement().value = ""), g.invalidateModel()
-        }, g.isVisible = function (e) {
+        }, 
+        g.isVisible = function (e) {
             if (e.isEmpty()) {
                 var t = a.v("tagname"), n = true;
                 if ("" != t) {
@@ -1043,7 +1061,8 @@ function viewCurrentTags() {
                 }
             }
             return n
-        }, tagsDialog = new ht.widget.Panel({
+        }, 
+        tagsDialog = new ht.widget.Panel({
             id: "tagsDialog",
             title: "页面标签浏览器",
             restoreToolTip: "页面标签浏览器",
@@ -1053,7 +1072,8 @@ function viewCurrentTags() {
             minimizable: false,
             content: e,
             expanded: true
-        }), tagsDialog.setPositionRelativeTo("rightTop"), tagsDialog.setPosition(0, 0), updatecallback = function (a, e) {
+        }), 
+        tagsDialog.setPositionRelativeTo("rightTop"), tagsDialog.setPosition(0, 0), updatecallback = function (a, e) {
             tagsDialog && "" == tagsDialog.getView().style.display && (e ? t.each(function (t) {
                 var n = t.a("tagname");
                 if ("PLAYBACKMODE" == n || "IOERROR" == n || "NORMALMODE" == n) (i = e[n]) && t.a({
@@ -1075,7 +1095,8 @@ function viewCurrentTags() {
             }))
         };
         var p = new ht.widget.ContextMenu;
-        p.addTo(tagsDialog.getView()), p.setItems([{
+        p.addTo(tagsDialog.getView()), 
+        p.setItems([{
             label: "刷新", action: function () {
                 g.iv()
             }
@@ -1083,7 +1104,8 @@ function viewCurrentTags() {
             label: "关闭", action: function () {
                 updatecallback = null, document.body.removeChild(tagsDialog.getView()), tagsDialog = null
             }
-        }]), document.body.appendChild(tagsDialog.getView())
+        }]), 
+        document.body.appendChild(tagsDialog.getView())
     } else "" == tagsDialog.getView().style.display ? tagsDialog.getView().style.display = "none" : tagsDialog.getView().style.display = ""
 }
 

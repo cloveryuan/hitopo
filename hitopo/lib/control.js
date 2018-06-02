@@ -335,7 +335,8 @@ ht.Default.setImage('圆形指示灯', {
           "background": {
               func: function (data) {
                   var v = data.a("tagvalue");
-                  var on = data.a('oncolor'), off = data.a('offcolor');
+                  var on = data.a('oncolor'), 
+                    off = data.a('offcolor');
                   if (convertBoolValue(v))
                       return on || '#FF0000';
                   else
