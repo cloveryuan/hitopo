@@ -8,7 +8,7 @@
             padding: 0;
             margin: 0;
         }
-        /* body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";} */
+        body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
         .main {
             margin: 0;
             padding: 0;
@@ -52,7 +52,22 @@
         var filename = "", paramname = "", filejson = {};
         var baiduMap = false;
         var lonLatNode = false;//是否转换Node位置到经纬度
-    
+
+    // 百度地图
+        // baiduMap = true;
+        // lonLatNode = false;//是否转换Node位置到经纬度
+        // var currentcity = "北京";
+        // var centerpoint = new BMap.Point(119.967494, 31.779641);//地图中心
+        // var zoomlevel = 16;
+
+        // var myIcon = new BMap.Icon("images/user/10.png", new BMap.Size(128, 128), { imageSize: new BMap.Size(128, 128), anchor: new BMap.Size(64, 120) });
+        // //标注点数组
+        // var markerArr = [
+        //     { tag: "n1", title: "数据显示位置", content: "等待数据", icon: null, point: "119.964907|31.782972", isOpen: 0, tags: ["second", "minute"] },
+        //     { tag: "n2", title: "第二人民医院", content: "等待数据", icon: null, point: "119.966847|31.780577", isOpen: 0, tags: ["second", "day"] },
+        //     { tag: "n3", title: "长安大厦", content: "等待数据", icon: myIcon, point: "119.961637|31.779257", isOpen: 0, tags: ["second", "day"] }
+        // ];
+    // 百度地图结束
 
         var sys_blink = false;
         var dm = null;
@@ -79,6 +94,7 @@
     <script type="text/javascript" src="lib/scada.js"></script>
     <!-- <script type="text/javascript" src="lib/runtime-38.js"></script> -->
     <script type="text/javascript" src="lib/runtimev38.js"></script>
+    <script type="text/javascript" src="lib/yuan.js"></script>
     <!-- <script src="js/bmap.js"></script>地图 -->
 
     <!--head global script-->
@@ -100,6 +116,7 @@
         isMovable = false;
         layers = ['backgroundLayer', 'nodeLayer', 'textLayer', 'l4', 'l5', 'l6', 'l7', 'l8'];
         filejson = #{pyVars.json};
+        
     </script>
 </head>
 <body onload="init();">

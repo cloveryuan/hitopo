@@ -1,6 +1,6 @@
 ﻿isRuning = false;
 tags = "";
-_rows = 1000;
+_rows = 1000;//标签浏览器分页数量
 isReadonly = false;
 _playbackmode = false;
 _normalmode = true;
@@ -84,32 +84,26 @@ function createLocalTags(_dm) {
     var data = new ht.Data();
     data.a({
         index: 0,
-        id: "IOERROR",
-        unit: '',
-        type: 'Boolean',
-        plug: '',
-        desc: '本地通讯故障'
+        station: "IOERROR",
+        faci: '',
+        signal: '本地通讯故障',
     });
     _dm.add(data);
     data = new ht.Data();
     data.a({
         index: 0,
-        id: "NORMALMODE",
-        unit: '',
-        type: 'Boolean',
-        plug: '',
-        desc: '正常运行模式'
+        station: "NORMALMODE",
+        faci: '',
+        signal: '正常运行模式'
     });
 
     _dm.add(data);
     data = new ht.Data();
     data.a({
         index: 0,
-        id: "PLAYBACKMODE",
-        unit: '',
-        type: 'Boolean',
-        plug: '',
-        desc: '历史回放模式'
+        station: "PLAYBACKMODE",
+        faci: '',
+        signal: '历史回放模式'
     });
 }
 
@@ -172,6 +166,7 @@ function viewrealtrend(param) {
         location.href = "realtrend.aspx";
 }
 
+// 打开实时趋势
 function openrealtrend(param) {
     if (param)
         window.open(encodeURI("realtrend.aspx?" + param));
@@ -180,7 +175,7 @@ function openrealtrend(param) {
 }
 
 //tags trend title
-// 跳转历史趋势
+// 跳转历史趋势鼠标脚本信息
 function viewhistrend(param) {
     if (param)
         location.href = encodeURI("histrend.aspx?" + param);

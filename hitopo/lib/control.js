@@ -1,7 +1,7 @@
 ﻿function convertBoolValue(v) {
     if (typeof v != "undefined") {
         if (typeof v == 'string')
-           return (v == "1" || v == "true");
+            return (v == "1" || v == "true");
         else if (typeof v == 'number')
             return v != 0;
         else if (typeof v == 'boolean')
@@ -17,47 +17,47 @@ ht.Default.setImage('Pump', {
     "author": "",
     "note": "",
     "comps": [
-      {
-          "type": "circle",
-          "rect": [4.42, 5.12, 128, 128],
-          "background": {
-              func: function (data) {
-                  var v = data.a("tagvalue");
-                  var on = data.a('oncolor'), off = data.a('offcolor');
-                  if (convertBoolValue(v))
-                       return on || '#FF0000';
-                  else
-                      return off || '#00FF00';
-              },
-              value: 'red'
-          },
-          "borderWidth": { "func": "attr@borderWidth", value: 2 },
-          "borderColor": {
-              "value": "#000",
-              "func": "attr@borderColor"
-          },
-          "gradient": { "func": "attr@gradient" },
-          "gradientColor": {
-              "value": "#FFF",
-              "func": "attr@gradientColor"
-          },
-          "pivot": [0.5, 0.5]
-      },
-      {
-          "type": "shape",
-          "rect": [6.42, 25.12, 109.75, 86.49],
-          "points": [115, 25, 6, 68, 116, 112],
-          "segments": [1, 2, 2],
-          "background": "rgba(255,255,255,0)",
-          "borderWidth": { "func": "attr@borderWidth", value: 2 },
-          "borderColor": {
-              "value": "#000",
-              "func": "attr@borderColor"
-          },
-          "borderCap": "butt",
-          "borderJoin": "round",
-          "gradient": "",
-      }
+        {
+            "type": "circle",
+            "rect": [4.42, 5.12, 128, 128],
+            "background": {
+                func: function (data) {
+                    var v = data.a("tagvalue");
+                    var on = data.a('oncolor'), off = data.a('offcolor');
+                    if (convertBoolValue(v))
+                        return on || '#FF0000';
+                    else
+                        return off || '#00FF00';
+                },
+                value: 'red'
+            },
+            "borderWidth": { "func": "attr@borderWidth", value: 2 },
+            "borderColor": {
+                "value": "#000",
+                "func": "attr@borderColor"
+            },
+            "gradient": { "func": "attr@gradient" },
+            "gradientColor": {
+                "value": "#FFF",
+                "func": "attr@gradientColor"
+            },
+            "pivot": [0.5, 0.5]
+        },
+        {
+            "type": "shape",
+            "rect": [6.42, 25.12, 109.75, 86.49],
+            "points": [115, 25, 6, 68, 116, 112],
+            "segments": [1, 2, 2],
+            "background": "rgba(255,255,255,0)",
+            "borderWidth": { "func": "attr@borderWidth", value: 2 },
+            "borderColor": {
+                "value": "#000",
+                "func": "attr@borderColor"
+            },
+            "borderCap": "butt",
+            "borderJoin": "round",
+            "gradient": "",
+        }
     ]
 });
 
@@ -67,43 +67,43 @@ ht.Default.setImage('Pump1', {
     "author": "",
     "note": "",
     "comps": [
-      {
-          "type": "circle",
-          "rect": [4.42, 5.12, 128, 128],
-          "borderWidth": { "func": "attr@borderWidth", value: 4 },
-          "borderColor": {
-              func: function (data) {
-                  var v = data.a("tagvalue");
-                  var on = data.a('oncolor'), off = data.a('offcolor');
-                  if (convertBoolValue(v))
-                      return on || '#FF0000';
-                  else
-                      return off || '#00FF00';
-              },
-              value: 'red'
-          },
-          "pivot": [0.5, 0.5]
-      },
-      {
-          "type": "shape",
-          "rect": [6.42, 25.12, 109.75, 86.49],
-          "points": [115, 25, 6, 68, 116, 112],
-          "segments": [1, 2, 2],
-          "borderWidth": { "func": "attr@borderWidth", value: 4 },
-          "borderColor": {
-              func: function (data) {
-                  var v = data.a("tagvalue");
-                  var on = data.a('oncolor'), off = data.a('offcolor');
-                  if (convertBoolValue(v))
-                      return on || '#FF0000';
-                  else
-                      return off || '#00FF00';
-              },
-              value: 'red'
-          },
-          "borderCap": "butt",
-          "borderJoin": "round"
-      }
+        {
+            "type": "circle",
+            "rect": [4.42, 5.12, 128, 128],
+            "borderWidth": { "func": "attr@borderWidth", value: 4 },
+            "borderColor": {
+                func: function (data) {
+                    var v = data.a("tagvalue");
+                    var on = data.a('oncolor'), off = data.a('offcolor');
+                    if (convertBoolValue(v))
+                        return on || '#FF0000';
+                    else
+                        return off || '#00FF00';
+                },
+                value: 'red'
+            },
+            "pivot": [0.5, 0.5]
+        },
+        {
+            "type": "shape",
+            "rect": [6.42, 25.12, 109.75, 86.49],
+            "points": [115, 25, 6, 68, 116, 112],
+            "segments": [1, 2, 2],
+            "borderWidth": { "func": "attr@borderWidth", value: 4 },
+            "borderColor": {
+                func: function (data) {
+                    var v = data.a("tagvalue");
+                    var on = data.a('oncolor'), off = data.a('offcolor');
+                    if (convertBoolValue(v))
+                        return on || '#FF0000';
+                    else
+                        return off || '#00FF00';
+                },
+                value: 'red'
+            },
+            "borderCap": "butt",
+            "borderJoin": "round"
+        }
     ]
 });
 
@@ -113,34 +113,34 @@ ht.Default.setImage('Valve', {
     "author": "",
     "note": "",
     "comps": [
-      {
-          "type": "shape",
-          "rect": [5, 5, 40, 30],
-          "points": [5, 5, 40, 30, 40, 5, 5, 30],
-          "segments": [1, 2, 2, 2, 5],
-          "background": {
-              func: function (data) {
-                  var v = data.a("tagvalue");
-                  var on = data.a('oncolor'), off = data.a('offcolor');
-                  if (convertBoolValue(v))
-                      return on || '#FF0000';
-                  else
-                      return off || '#00FF00';
-              },
-              value: 'red'
-          },
-          "borderWidth": { "func": "attr@borderWidth", value: 1 },
-          "borderColor": {
-              "value": "#000",
-              "func": "attr@borderColor"
-          },
-          "gradient": { "func": "attr@gradient" },
-          "gradientColor": {
-              "value": "#FFF",
-              "func": "attr@gradientColor"
-          },
-          "pivot": [0.5, 0.5]
-      }
+        {
+            "type": "shape",
+            "rect": [5, 5, 40, 30],
+            "points": [5, 5, 40, 30, 40, 5, 5, 30],
+            "segments": [1, 2, 2, 2, 5],
+            "background": {
+                func: function (data) {
+                    var v = data.a("tagvalue");
+                    var on = data.a('oncolor'), off = data.a('offcolor');
+                    if (convertBoolValue(v))
+                        return on || '#FF0000';
+                    else
+                        return off || '#00FF00';
+                },
+                value: 'red'
+            },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": {
+                "value": "#000",
+                "func": "attr@borderColor"
+            },
+            "gradient": { "func": "attr@gradient" },
+            "gradientColor": {
+                "value": "#FFF",
+                "func": "attr@gradientColor"
+            },
+            "pivot": [0.5, 0.5]
+        }
     ]
 });
 
@@ -150,54 +150,54 @@ ht.Default.setImage('Valve1', {
     "author": "",
     "note": "",
     "comps": [
-      {
-          "type": "shape",
-          "rect": [5, 5, 40, 30],
-          "points": [5, 5, 40, 30, 40, 5, 5, 30],
-          "segments": [1, 2, 2, 2, 5],
-          "background": {
-              func: function (data) {
-                  var v = data.a("tagvalue");
-                  var on = data.a('oncolor'), off = data.a('offcolor');
-                  if (convertBoolValue(v))
-                      return on || '#FF0000';
-                  else
-                      return off || '#00FF00';
-              },
-              value: 'red'
-          },
-          "borderWidth": { "func": "attr@borderWidth", value: 1 },
-          "borderColor": {
-              "value": "#000",
-              "func": "attr@borderColor"
-          },
-          "gradient": { "func": "attr@gradient" },
-          "gradientColor": {
-              "value": "#FFF",
-              "func": "attr@gradientColor"
-          },
-          "pivot": [0.5, 0.5]
-      },
-      {
-          type: 'oval',
-          "background": {
-              func: function (data) {
-                  var v = data.a("tagvalue");
-                  var on = data.a('oncolor'), off = data.a('offcolor');
-                  if (convertBoolValue(v))
-                      return on || '#FF0000';
-                  else
-                      return off || '#00FF00';
-              },
-              value: 'red'
-          },
-          "borderWidth": { "func": "attr@borderWidth", value: 1 },
-          "borderColor": {
-              "value": "#000",
-              "func": "attr@borderColor"
-          },
-          rect: [20, 8, 10, 24]
-      }
+        {
+            "type": "shape",
+            "rect": [5, 5, 40, 30],
+            "points": [5, 5, 40, 30, 40, 5, 5, 30],
+            "segments": [1, 2, 2, 2, 5],
+            "background": {
+                func: function (data) {
+                    var v = data.a("tagvalue");
+                    var on = data.a('oncolor'), off = data.a('offcolor');
+                    if (convertBoolValue(v))
+                        return on || '#FF0000';
+                    else
+                        return off || '#00FF00';
+                },
+                value: 'red'
+            },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": {
+                "value": "#000",
+                "func": "attr@borderColor"
+            },
+            "gradient": { "func": "attr@gradient" },
+            "gradientColor": {
+                "value": "#FFF",
+                "func": "attr@gradientColor"
+            },
+            "pivot": [0.5, 0.5]
+        },
+        {
+            type: 'oval',
+            "background": {
+                func: function (data) {
+                    var v = data.a("tagvalue");
+                    var on = data.a('oncolor'), off = data.a('offcolor');
+                    if (convertBoolValue(v))
+                        return on || '#FF0000';
+                    else
+                        return off || '#00FF00';
+                },
+                value: 'red'
+            },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": {
+                "value": "#000",
+                "func": "attr@borderColor"
+            },
+            rect: [20, 8, 10, 24]
+        }
     ]
 });
 
@@ -207,62 +207,62 @@ ht.Default.setImage('Valve2', {
     "author": "",
     "note": "",
     "comps": [
-      {
-          "type": "shape",
-          "points": [5, 5, 25, 20, 5, 35],
-          "segments": [1, 2, 2, 5],
-          "background": {
-              func: function (data) {
-                  if (data.values) {
-                      var on = data.a('oncolor') || '#FF0000', off = data.a('offcolor') || '#00FF00';
-                      if (data.values[1])
-                          return off;
-                      else
-                          return on;
-                  }
-              },
-              value: 'red'
-          },
-          "borderWidth": { "func": "attr@borderWidth", value: 1 },
-          "borderColor": {
-              "value": "#000",
-              "func": "attr@borderColor"
-          },
-          "gradient": { "func": "attr@gradient" },
-          "gradientColor": {
-              "value": "#FFF",
-              "func": "attr@gradientColor"
-          },
-          "pivot": [0.5, 0.5]
-      },
-      {
-          "type": "shape",
-          "points": [25, 20, 45, 5, 45, 35],
-          "segments": [1, 2, 2, 5],
-          "background": {
-              func: function (data) {
-                  if (data.values) {
-                      var on = data.a('oncolor') || '#FF0000', off = data.a('offcolor') || '#00FF00';
-                      if (data.values[0])
-                          return on;
-                      else
-                          return off;
-                  }
-              },
-              value: '#00FF00'
-          },
-          "borderWidth": { "func": "attr@borderWidth", value: 1 },
-          "borderColor": {
-              "value": "#000",
-              "func": "attr@borderColor"
-          },
-          "gradient": { "func": "attr@gradient" },
-          "gradientColor": {
-              "value": "#FFF",
-              "func": "attr@gradientColor"
-          },
-          "pivot": [0.5, 0.5]
-      }
+        {
+            "type": "shape",
+            "points": [5, 5, 25, 20, 5, 35],
+            "segments": [1, 2, 2, 5],
+            "background": {
+                func: function (data) {
+                    if (data.values) {
+                        var on = data.a('oncolor') || '#FF0000', off = data.a('offcolor') || '#00FF00';
+                        if (data.values[1])
+                            return off;
+                        else
+                            return on;
+                    }
+                },
+                value: 'red'
+            },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": {
+                "value": "#000",
+                "func": "attr@borderColor"
+            },
+            "gradient": { "func": "attr@gradient" },
+            "gradientColor": {
+                "value": "#FFF",
+                "func": "attr@gradientColor"
+            },
+            "pivot": [0.5, 0.5]
+        },
+        {
+            "type": "shape",
+            "points": [25, 20, 45, 5, 45, 35],
+            "segments": [1, 2, 2, 5],
+            "background": {
+                func: function (data) {
+                    if (data.values) {
+                        var on = data.a('oncolor') || '#FF0000', off = data.a('offcolor') || '#00FF00';
+                        if (data.values[0])
+                            return on;
+                        else
+                            return off;
+                    }
+                },
+                value: '#00FF00'
+            },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": {
+                "value": "#000",
+                "func": "attr@borderColor"
+            },
+            "gradient": { "func": "attr@gradient" },
+            "gradientColor": {
+                "value": "#FFF",
+                "func": "attr@gradientColor"
+            },
+            "pivot": [0.5, 0.5]
+        }
     ]
 });
 
@@ -272,54 +272,54 @@ ht.Default.setImage('Valve3', {
     "author": "",
     "note": "",
     "comps": [
-      {
-          "type": "shape",
-          "rect": [5, 5, 40, 30],
-          "points": [5, 5, 40, 30, 40, 5, 5, 30],
-          "segments": [1, 2, 2, 2, 5],
-          "background": {
-              func: function (data) {
-                  var v = data.a("tagvalue");
-                  var on = data.a('oncolor'), off = data.a('offcolor');
-                  if (convertBoolValue(v))
-                      return on || '#FF0000';
-                  else
-                      return off || '#00FF00';
-              },
-              value: 'red'
-          },
-          "borderWidth": { "func": "attr@borderWidth", value: 1 },
-          "borderColor": {
-              "value": "#000",
-              "func": "attr@borderColor"
-          },
-          "gradient": { "func": "attr@gradient" },
-          "gradientColor": {
-              "value": "#FFF",
-              "func": "attr@gradientColor"
-          },
-          "pivot": [0.5, 0.5]
-      },
-      {
-          type: 'rect',
-          "background": {
-              func: function (data) {
-                  var v = data.a("tagvalue");
-                  var on = data.a('oncolor'), off = data.a('offcolor');
-                  if (convertBoolValue(v))
-                      return on || '#FF0000';
-                  else
-                      return off || '#00FF00';
-              },
-              value: 'red'
-          },
-          "borderWidth": { "func": "attr@borderWidth", value: 1 },
-          "borderColor": {
-              "value": "#000",
-              "func": "attr@borderColor"
-          },
-          rect: [20, 8, 10, 24]
-      }
+        {
+            "type": "shape",
+            "rect": [5, 5, 40, 30],
+            "points": [5, 5, 40, 30, 40, 5, 5, 30],
+            "segments": [1, 2, 2, 2, 5],
+            "background": {
+                func: function (data) {
+                    var v = data.a("tagvalue");
+                    var on = data.a('oncolor'), off = data.a('offcolor');
+                    if (convertBoolValue(v))
+                        return on || '#FF0000';
+                    else
+                        return off || '#00FF00';
+                },
+                value: 'red'
+            },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": {
+                "value": "#000",
+                "func": "attr@borderColor"
+            },
+            "gradient": { "func": "attr@gradient" },
+            "gradientColor": {
+                "value": "#FFF",
+                "func": "attr@gradientColor"
+            },
+            "pivot": [0.5, 0.5]
+        },
+        {
+            type: 'rect',
+            "background": {
+                func: function (data) {
+                    var v = data.a("tagvalue");
+                    var on = data.a('oncolor'), off = data.a('offcolor');
+                    if (convertBoolValue(v))
+                        return on || '#FF0000';
+                    else
+                        return off || '#00FF00';
+                },
+                value: 'red'
+            },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": {
+                "value": "#000",
+                "func": "attr@borderColor"
+            },
+            rect: [20, 8, 10, 24]
+        }
     ]
 });
 
@@ -329,33 +329,33 @@ ht.Default.setImage('圆形指示灯', {
     "author": "",
     "note": "",
     "comps": [
-      {
-          "type": { "func": "attr@type", value: "circle" },//   "circle",
-          "rect": [5, 5, 50, 50],
-          "background": {
-              func: function (data) {
-                  var v = data.a("tagvalue");
-                  var on = data.a('oncolor'), 
-                    off = data.a('offcolor');
-                  if (convertBoolValue(v))
-                      return on || '#FF0000';
-                  else
-                      return off || '#00FF00';
-              },
-              value: 'red'
-          },
-          "borderWidth": { "func": "attr@borderWidth", value: 2 },
-          "borderColor": {
-              "value": "#000",
-              "func": "attr@borderColor"
-          },
-          "gradient": { "func": "attr@gradient" },
-          "gradientColor": {
-              "value": "#FFF",
-              "func": "attr@gradientColor"
-          },
-          "pivot": [0.5, 0.5]
-      }
+        {
+            "type": { "func": "attr@type", value: "circle" },//   "circle",
+            "rect": [5, 5, 50, 50],
+            "background": {
+                func: function (data) {
+                    var v = data.a("tagvalue");
+                    var on = data.a('oncolor'),
+                        off = data.a('offcolor');
+                    if (convertBoolValue(v))
+                        return on || '#FF0000';
+                    else
+                        return off || '#00FF00';
+                },
+                value: 'red'
+            },
+            "borderWidth": { "func": "attr@borderWidth", value: 2 },
+            "borderColor": {
+                "value": "#000",
+                "func": "attr@borderColor"
+            },
+            "gradient": { "func": "attr@gradient" },
+            "gradientColor": {
+                "value": "#FFF",
+                "func": "attr@gradientColor"
+            },
+            "pivot": [0.5, 0.5]
+        }
     ]
 });
 
@@ -365,32 +365,32 @@ ht.Default.setImage('矩形指示灯', {
     "author": "",
     "note": "",
     "comps": [
-      {
-          "type": { "func": "attr@type", value: "rect" },//"rect",
-          "rect": [5, 5, 30, 30],
-          "background": {
-              func: function (data) {
-                  var v = data.a("tagvalue");
-                  var on = data.a('oncolor'), off = data.a('offcolor');
-                  if (convertBoolValue(v))
-                      return on || '#FF0000';
-                  else
-                      return off || '#00FF00';
-              },
-              value: 'red'
-          },
-          "borderWidth": { "func": "attr@borderWidth", value: 2 },
-          "borderColor": {
-              "value": "#000",
-              "func": "attr@borderColor"
-          },
-          "gradient": { "func": "attr@gradient" },
-          "gradientColor": {
-              "value": "#FFF",
-              "func": "attr@gradientColor"
-          },
-          "pivot": [0.5, 0.5]
-      }
+        {
+            "type": { "func": "attr@type", value: "rect" },//"rect",
+            "rect": [5, 5, 30, 30],
+            "background": {
+                func: function (data) {
+                    var v = data.a("tagvalue");
+                    var on = data.a('oncolor'), off = data.a('offcolor');
+                    if (convertBoolValue(v))
+                        return on || '#FF0000';
+                    else
+                        return off || '#00FF00';
+                },
+                value: 'red'
+            },
+            "borderWidth": { "func": "attr@borderWidth", value: 2 },
+            "borderColor": {
+                "value": "#000",
+                "func": "attr@borderColor"
+            },
+            "gradient": { "func": "attr@gradient" },
+            "gradientColor": {
+                "value": "#FFF",
+                "func": "attr@gradientColor"
+            },
+            "pivot": [0.5, 0.5]
+        }
     ]
 });
 
@@ -400,54 +400,54 @@ ht.Default.setImage("单只叶片", {
     "author": "",
     "note": "",
     "comps": [
-      {
-          "type": "shape",
-          "rect": [2, 80, 10, 8],
-          "points": [5, 88, 6, 83, 2, 80, 12, 80, 12, 88, 5, 88],
-          "segments": [1, 3, 2, 2, 2],
-          "background": {
-              "value": "rgb(180, 180, 180)",
-              "func": "attr@background"
-          },
-          "borderWidth": 0,
-          "gradient": "spread.west",
-          "gradientColor": {
-              "value": "#FFF",
-              "func": "attr@gradientColor"
-          }
-      },
-      {
-          "type": "shape",
-          "rect": [7, 1, 5, 79],
-          "points": [7, 1, 7, 80, 12, 80, 12, 71, 11, 35, 7, 1],
-          "segments": [1, 2, 2, 4],
-          "background": {
-              "value": "rgb(180, 180, 180)",
-              "func": "attr@background"
-          },
-          "borderWidth": 0,
-          "gradient": "spread.east",
-          "gradientColor": {
-              "value": "#FFF",
-              "func": "attr@gradientColor"
-          }
-      },
-      {
-          "type": "shape",
-          "rect": [2, 1, 5, 79],
-          "points": [2, 80, 7, 62, 7, 23, 7, 1, 7, 80],
-          "segments": [1, 4, 2],
-          "background": {
-              "value": "rgb(180, 180, 180)",
-              "func": "attr@background"
-          },
-          "borderWidth": 0,
-          "gradient": "spread.west",
-          "gradientColor": {
-              "value": "#FFF",
-              "func": "attr@gradientColor"
-          }
-      }
+        {
+            "type": "shape",
+            "rect": [2, 80, 10, 8],
+            "points": [5, 88, 6, 83, 2, 80, 12, 80, 12, 88, 5, 88],
+            "segments": [1, 3, 2, 2, 2],
+            "background": {
+                "value": "rgb(180, 180, 180)",
+                "func": "attr@background"
+            },
+            "borderWidth": 0,
+            "gradient": "spread.west",
+            "gradientColor": {
+                "value": "#FFF",
+                "func": "attr@gradientColor"
+            }
+        },
+        {
+            "type": "shape",
+            "rect": [7, 1, 5, 79],
+            "points": [7, 1, 7, 80, 12, 80, 12, 71, 11, 35, 7, 1],
+            "segments": [1, 2, 2, 4],
+            "background": {
+                "value": "rgb(180, 180, 180)",
+                "func": "attr@background"
+            },
+            "borderWidth": 0,
+            "gradient": "spread.east",
+            "gradientColor": {
+                "value": "#FFF",
+                "func": "attr@gradientColor"
+            }
+        },
+        {
+            "type": "shape",
+            "rect": [2, 1, 5, 79],
+            "points": [2, 80, 7, 62, 7, 23, 7, 1, 7, 80],
+            "segments": [1, 4, 2],
+            "background": {
+                "value": "rgb(180, 180, 180)",
+                "func": "attr@background"
+            },
+            "borderWidth": 0,
+            "gradient": "spread.west",
+            "gradientColor": {
+                "value": "#FFF",
+                "func": "attr@gradientColor"
+            }
+        }
     ]
 });
 
@@ -457,38 +457,38 @@ ht.Default.setImage('风机头', {
     "author": "",
     "note": "",
     "comps": [
-      {
-          "type": "image",
-          "name": "单只叶片",
-          "rect": [86.35, 3.7, 15, 90]
-      },
-      {
-          "type": "image",
-          "name": "单只叶片",
-          "rect": [128.46, 72.24, 15, 90],
-          "rotation": 2.09
-      },
-      {
-          "type": "image",
-          "name": "单只叶片",
-          "rect": [47.86, 73.82, 15, 90],
-          "rotation": 4.19
-      },
-      {
-          "type": "circle",
-          "rect": [90, 90, 10, 10],
-          "background": {
-              "value": "rgb(180, 180, 180)",
-              "func": "attr@background"
-          },
-          "borderWidth": 0,
-          "gradient": "radial.center",
-          "gradientColor": {
-              "value": "#FFF",
-              "func": "attr@gradientColor"
-          },
-          "pivot": [0.5, 0.5]
-      }
+        {
+            "type": "image",
+            "name": "单只叶片",
+            "rect": [86.35, 3.7, 15, 90]
+        },
+        {
+            "type": "image",
+            "name": "单只叶片",
+            "rect": [128.46, 72.24, 15, 90],
+            "rotation": 2.09
+        },
+        {
+            "type": "image",
+            "name": "单只叶片",
+            "rect": [47.86, 73.82, 15, 90],
+            "rotation": 4.19
+        },
+        {
+            "type": "circle",
+            "rect": [90, 90, 10, 10],
+            "background": {
+                "value": "rgb(180, 180, 180)",
+                "func": "attr@background"
+            },
+            "borderWidth": 0,
+            "gradient": "radial.center",
+            "gradientColor": {
+                "value": "#FFF",
+                "func": "attr@gradientColor"
+            },
+            "pivot": [0.5, 0.5]
+        }
     ]
 });
 
@@ -498,48 +498,48 @@ ht.Default.setImage("风机整机", {
     "author": "",
     "note": "",
     "comps": [
-      {
-          "type": "trapezoid",
-          "rect": [89.75, 104.64, 10.42, 127.95],
-          "background": "rgb(180, 180, 180)",
-          "borderWidth": 0,
-          "gradient": "linear.west",
-          "gradientColor": "#FFF",
-          "pivot": [0.5, 0.5]
-      },
-      {
-          "type": "trapezoid",
-          "rect": [85.21, 232.24, 20, 2.93],
-          "background": "rgb(180, 180, 180)",
-          "borderWidth": 0,
-          "gradient": "linear.west",
-          "gradientColor": "#FFF",
-          "pivot": [0.5, 0.5]
-      },
-      {
-          "type": "roundRect",
-          "rect": [81.62, 94.75, 20, 10],
-          "background": "rgb(180, 180, 180)",
-          "borderWidth": 0,
-          "gradient": "radial.east",
-          "gradientColor": "#FFF",
-          "rotation": 0.09,
-          "pivot": [0.5, 0.5]
-      },
-      {
-          "type": "image",
-          "name": { func: "attr@fanheadname", value: "风机头" },
-          "rect": [5.07, 5.42, 190, 190],
-          "rotation": {
-              "func": "attr@rotation", value: 0
-          }
-      }
+        {
+            "type": "trapezoid",
+            "rect": [89.75, 104.64, 10.42, 127.95],
+            "background": "rgb(180, 180, 180)",
+            "borderWidth": 0,
+            "gradient": "linear.west",
+            "gradientColor": "#FFF",
+            "pivot": [0.5, 0.5]
+        },
+        {
+            "type": "trapezoid",
+            "rect": [85.21, 232.24, 20, 2.93],
+            "background": "rgb(180, 180, 180)",
+            "borderWidth": 0,
+            "gradient": "linear.west",
+            "gradientColor": "#FFF",
+            "pivot": [0.5, 0.5]
+        },
+        {
+            "type": "roundRect",
+            "rect": [81.62, 94.75, 20, 10],
+            "background": "rgb(180, 180, 180)",
+            "borderWidth": 0,
+            "gradient": "radial.east",
+            "gradientColor": "#FFF",
+            "rotation": 0.09,
+            "pivot": [0.5, 0.5]
+        },
+        {
+            "type": "image",
+            "name": { func: "attr@fanheadname", value: "风机头" },
+            "rect": [5.07, 5.42, 190, 190],
+            "rotation": {
+                "func": "attr@rotation", value: 0
+            }
+        }
     ]
 });
 
 ht.Chart = function (option) {
     var self = this,
-    view = self._view = document.createElement('div');
+        view = self._view = document.createElement('div');
     view.style.position = 'absolute';
     view.style.setProperty('box-sizing', 'border-box', null);
     self._option = option;
@@ -555,7 +555,7 @@ ht.Default.def('ht.Chart', Object, {
     ms_ac: ['chart', 'option', 'isFirst', 'view'],
     validateImpl: function () {
         var self = this,
-                chart = self._chart;
+            chart = self._chart;
         chart.resize();
         if (self._FIRST) {
             self._FIRST = false;
@@ -834,7 +834,7 @@ ht.Default.setImage('TagValue', {
                 func: function (data, view) {
                     var width = data.getWidth(),
                         height = data.getHeight();
-                    return [0,0, width, height];
+                    return [0, 0, width, height];
                 }
             },
             text: {
@@ -893,7 +893,7 @@ ht.Default.setImage('TagValue', {
                             return "#FF00FF";
                     }
                     return data.s("color");
-                } , value: 'black'
+                }, value: 'black'
             },
             digcount: { func: 'attr@digcount', value: 2 },
             unit: { func: 'attr@unit', value: '' },
@@ -902,7 +902,7 @@ ht.Default.setImage('TagValue', {
         }
     ]
 });
-
+// 标签值
 ht.Default.setImage('TagValue1', {
     width: { func: 'field@_width', value: 50 },
     height: { func: 'field@_height', value: 24 },
@@ -987,12 +987,12 @@ ht.Default.setImage('TagValue1', {
                                     return sys_blink ? s : data.s("color");
                                 }
                                 else
-                                   return s;
+                                    return s;
                             }
                         }
                     }
                     return data.s("color");
-                } , value: 'black'
+                }, value: 'black'
             },
             digcount: { func: 'attr@digcount', value: 2 },
             unit: { func: 'attr@unit', value: '' },
@@ -2146,13 +2146,13 @@ ht.Default.setImage('BoxSubstation', {
     ]
 });
 
-ht.Switch = function(){    
-    ht.Switch.superClass.constructor.call(this); 
+ht.Switch = function () {
+    ht.Switch.superClass.constructor.call(this);
     this.s('switch.angle', 0);
 };
 
 ht.Default.def('ht.Switch', ht.Node, {
-    _image : 'switch',
+    _image: 'switch',
     _icon: 'switch',
 
     toggle: function (anim) {
@@ -2162,31 +2162,31 @@ ht.Default.def('ht.Switch', ht.Node, {
         return this.s('switch.angle') !== 0;
     },
     setExpanded: function (expanded, anim) {
-        if(anim == null){
+        if (anim == null) {
             anim = true;
         }
         var self = this,
             animation = self._animation,
             oldValue = self.isExpanded();
-        
-        if(animation){
+
+        if (animation) {
             animation.stop(true);
             delete self._animation;
         }
-            
-        if (oldValue !== expanded) {                        
-            var targetAngle = expanded ? -Math.PI/4 : 0;                      
 
-            if(anim){                
-                oldValue = self.s('switch.angle');                
+        if (oldValue !== expanded) {
+            var targetAngle = expanded ? -Math.PI / 4 : 0;
+
+            if (anim) {
+                oldValue = self.s('switch.angle');
                 self._animation = ht.Default.startAnim({
-                    action: function(t){
-                        self.s('switch.angle', oldValue + (targetAngle-oldValue)*t);
+                    action: function (t) {
+                        self.s('switch.angle', oldValue + (targetAngle - oldValue) * t);
                     }
-                });                                                  
-            }else{
+                });
+            } else {
                 self.s('switch.angle', targetAngle);
-            }            
+            }
         }
     }
 });
@@ -2196,19 +2196,19 @@ ht.Default.setImage('饼图', {
     width: 100,
     height: 100,
     comps: [
-         {
-             type: 'pieChart',
-             rect: [10, 10, 80, 80],
-             label: function (value, i, sum, data) { return value; },
-             labelColor: { func: 'style@labelColor', value: 'white' },
-             shadow: { func: 'style@shadow', value: true },
-             shadowColor: { func: 'style@shadowColor', value: 'rgba(0, 0, 0, 0.5)' },
-             values: { func: 'style@values', value: [20, 30, 40, 50] },
-             colors: { func: 'style@colors' },
-             hollow: { func: 'style@hollow', value: false },
-             startAngle: { func: 'style@startAngle', value: 0 },
-             labelFont: { func: 'style@labelFont', value: '10px Arial' }
-         }
+        {
+            type: 'pieChart',
+            rect: [10, 10, 80, 80],
+            label: function (value, i, sum, data) { return value; },
+            labelColor: { func: 'style@labelColor', value: 'white' },
+            shadow: { func: 'style@shadow', value: true },
+            shadowColor: { func: 'style@shadowColor', value: 'rgba(0, 0, 0, 0.5)' },
+            values: { func: 'style@values', value: [20, 30, 40, 50] },
+            colors: { func: 'style@colors' },
+            hollow: { func: 'style@hollow', value: false },
+            startAngle: { func: 'style@startAngle', value: 0 },
+            labelFont: { func: 'style@labelFont', value: '10px Arial' }
+        }
     ]
 });
 
@@ -2217,16 +2217,16 @@ ht.Default.setImage('柱状图', {
     width: 200,
     height: 100,
     comps: [
-         {
-             type: 'columnChart',
-             rect: [0, 20, 200, 80],
-             label: function (value, i, sum, data) { return value; },
-             labelColor: { func: 'style@labelColor', value: 'black' },
-             minValue: { func: 'style@minValue', value: 0 },
-             maxValue: { func: 'style@maxValue' },
-             labelFont: { func: 'style@labelFont', value: '10px Arial' },
-             series: { func: 'attr@series', value: [{ values: [20, 30, 40, 50], colors: ['red', 'blue', 'green', 'black'] }] },
-         }
+        {
+            type: 'columnChart',
+            rect: [0, 20, 200, 80],
+            label: function (value, i, sum, data) { return value; },
+            labelColor: { func: 'style@labelColor', value: 'black' },
+            minValue: { func: 'style@minValue', value: 0 },
+            maxValue: { func: 'style@maxValue' },
+            labelFont: { func: 'style@labelFont', value: '10px Arial' },
+            series: { func: 'attr@series', value: [{ values: [20, 30, 40, 50], colors: ['red', 'blue', 'green', 'black'] }] },
+        }
     ]
 });
 
@@ -2235,19 +2235,19 @@ ht.Default.setImage('折线图', {
     width: 300,
     height: 150,
     comps: [
-         {
-             type: 'lineChart',
-             rect: [10, 20, 280, 130],
-             label: function (value, i, sum, data) { return value; },
-             labelColor: { func: 'style@labelColor', value: 'black' },
-             minValue: { func: 'style@minValue', value: 0 },
-             maxValue: { func: 'style@maxValue' },
-             labelFont: { func: 'style@labelFont', value: '10px Arial' },
-             series: { func: 'attr@series', value: [{ color: 'red', values: [60, 80, 70, 50, 90, 30, 20, 80] }, { color: 'blue', values: [160, 180, 170, 150, 190, 130, 120, 180] }] },
-             lineWidth: { func: 'style@lineWidth', value: 2 },
-             line3d: { func: 'style@line3d', value: false },
-             linePoint: { func: 'style@linePoint', value: true },
-         }
+        {
+            type: 'lineChart',
+            rect: [10, 20, 280, 130],
+            label: function (value, i, sum, data) { return value; },
+            labelColor: { func: 'style@labelColor', value: 'black' },
+            minValue: { func: 'style@minValue', value: 0 },
+            maxValue: { func: 'style@maxValue' },
+            labelFont: { func: 'style@labelFont', value: '10px Arial' },
+            series: { func: 'attr@series', value: [{ color: 'red', values: [60, 80, 70, 50, 90, 30, 20, 80] }, { color: 'blue', values: [160, 180, 170, 150, 190, 130, 120, 180] }] },
+            lineWidth: { func: 'style@lineWidth', value: 2 },
+            line3d: { func: 'style@line3d', value: false },
+            linePoint: { func: 'style@linePoint', value: true },
+        }
     ]
 });
 
@@ -2256,15 +2256,15 @@ ht.Default.setImage('堆栈柱状图', {
     width: 300,
     height: 150,
     comps: [
-         {
-             type: 'stackedColumnChart',
-             rect: [10, 20, 280, 130],
-             label: function (value, i, sum, data) { return value; },
-             labelColor: { func: 'style@labelColor', value: 'black' },
-             maxValue: { func: 'style@maxValue' },
-             labelFont: { func: 'style@labelFont', value: '10px Arial' },
-             series: { func: 'attr@series', value: [{ color: 'red', values: [60, 80, 70, 50, 90] }, { color: 'blue', values: [160, 180, 170, 150, 190] }] }
-         }
+        {
+            type: 'stackedColumnChart',
+            rect: [10, 20, 280, 130],
+            label: function (value, i, sum, data) { return value; },
+            labelColor: { func: 'style@labelColor', value: 'black' },
+            maxValue: { func: 'style@maxValue' },
+            labelFont: { func: 'style@labelFont', value: '10px Arial' },
+            series: { func: 'attr@series', value: [{ color: 'red', values: [60, 80, 70, 50, 90] }, { color: 'blue', values: [160, 180, 170, 150, 190] }] }
+        }
     ]
 });
 
@@ -2273,14 +2273,14 @@ ht.Default.setImage('百分比柱状图', {
     width: 300,
     height: 150,
     comps: [
-         {
-             type: 'percentageColumnChart',
-             rect: [10, 20, 280, 130],
-             label: function (value, i, sum, data) { return value; },
-             labelColor: { func: 'style@labelColor', value: 'black' },
-             labelFont: { func: 'style@labelFont', value: '10px Arial' },
-             series: { func: 'attr@series', value: [{ color: 'red', values: [60, 80, 70, 50, 90] }, { color: 'blue', values: [160, 180, 170, 150, 190] }] }
-         }
+        {
+            type: 'percentageColumnChart',
+            rect: [10, 20, 280, 130],
+            label: function (value, i, sum, data) { return value; },
+            labelColor: { func: 'style@labelColor', value: 'black' },
+            labelFont: { func: 'style@labelFont', value: '10px Arial' },
+            series: { func: 'attr@series', value: [{ color: 'red', values: [60, 80, 70, 50, 90] }, { color: 'blue', values: [160, 180, 170, 150, 190] }] }
+        }
     ]
 });
 
@@ -2288,28 +2288,28 @@ ht.Default.setImage('UserShape', {
     "width": 100,
     "height": 100,
     "comps": [
-      {
-          "type": "shape",
-          "rect": [5, 5, 90, 90],
-          "points": { "func": "style@points", value: [5, 5, 40, 30, 40, 5, 5, 30] },
-          "segments": { "func": "style@segments", value: [1, 2, 2, 2, 5] },
-          "background": { "func": "style@shape.background" },
-          "borderWidth": { "func": "style@shape.border.width", value: 2 },
-          "borderColor": { "func": "style@shape.border.color", value: 'black' },
-          "gradient": { "func": "style@shape.gradient" },
-          "borderCap": { "func": "style@shape.border.cap" },
-          "gradientColor": { "func": "style@shape.gradient.color" },
-          "borderJoin": { "func": "style@shape.border.join" },
-          "borderPattern": { "func": "style@shape.border.pattern" },
-          "repeatImage": { "func": "style@shape.repeat.image" },
-          "dash": { "func": "style@shape.dash" },
-          "border3d": { "func": "style@shape.border.3d" },
-          "dash3d": { "func": "style@shape.dash.3d" },
-          "dashPattern": { "func": "style@shape.dash.pattern" },
-          "dashOffset": { "func": "style@shape.dash.offset" },
-          "dashColor": { "func": "style@shape.dash.color" },
-          "dashWidth": { "func": "style@shape.dash.width" },
-      }
+        {
+            "type": "shape",
+            "rect": [5, 5, 90, 90],
+            "points": { "func": "style@points", value: [5, 5, 40, 30, 40, 5, 5, 30] },
+            "segments": { "func": "style@segments", value: [1, 2, 2, 2, 5] },
+            "background": { "func": "style@shape.background" },
+            "borderWidth": { "func": "style@shape.border.width", value: 2 },
+            "borderColor": { "func": "style@shape.border.color", value: 'black' },
+            "gradient": { "func": "style@shape.gradient" },
+            "borderCap": { "func": "style@shape.border.cap" },
+            "gradientColor": { "func": "style@shape.gradient.color" },
+            "borderJoin": { "func": "style@shape.border.join" },
+            "borderPattern": { "func": "style@shape.border.pattern" },
+            "repeatImage": { "func": "style@shape.repeat.image" },
+            "dash": { "func": "style@shape.dash" },
+            "border3d": { "func": "style@shape.border.3d" },
+            "dash3d": { "func": "style@shape.dash.3d" },
+            "dashPattern": { "func": "style@shape.dash.pattern" },
+            "dashOffset": { "func": "style@shape.dash.offset" },
+            "dashColor": { "func": "style@shape.dash.color" },
+            "dashWidth": { "func": "style@shape.dash.width" },
+        }
     ]
 });
 
@@ -2317,67 +2317,67 @@ ht.Default.setImage('BPT', {
     'width': 510,
     'height': 510,
     "comps": [
-      {
-          "type": "shape",
-          "rect": [5, 5, 500, 500],
-          "points": {
-              func: function (data) {
-                  if (data.a("point")) {
-                      var ar = data.a("point");
-                      var lst = new ht.List();
-                      var dlt = Math.PI * 2 / 20;
-                      var current = 0;
-                      for (i = 0; i < 20; i++) {
-                          var x = Math.cos(current) * ar[i] * 250;
-                          var y = Math.sin(current) * ar[i] * 250;
-                          current += dlt;
-                          lst.add(x);
-                          lst.add(y);
-                      }
-                      lst.add(250); lst.add(0);
-                      lst.add(0); lst.add(-250);
-                      lst.add(-250); lst.add(0);
-                      lst.add(0); lst.add(250);
-                      return lst.toArray();
-                  }
-                  else {
-                      var lst = new ht.List();
-                      var dlt = Math.PI * 2 / 20;
-                      var w = 250 * 0.6;
-                      var current = 0;
-                      for (i = 0; i < 20; i++) {
-                          var x = Math.cos(current) * w;
-                          var y = Math.sin(current) * w;
-                          current += dlt;
-                          lst.add(x);
-                          lst.add(y);
-                      }
-                      lst.add(250); lst.add(0);
-                      lst.add(0); lst.add(-250);
-                      lst.add(-250); lst.add(0);
-                      lst.add(0); lst.add(250);
-                      return lst.toArray();
-                  }
-              }
-          },
-          "segments": { "func": "style@segments", value: [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, , 2, 5] },
-          //"background": {"func":"style@shape.background" },
-          "borderWidth": 2,//{"func": "style@shape.border.width", value: 2 },
-          "borderColor": '#00FFFF',//{ "func": "style@shape.border.color", value: 'black' },
-          "gradient": { "func": "style@shape.gradient" },
-          "borderCap": { "func": "style@shape.border.cap" },
-          "gradientColor": { "func": "style@shape.gradient.color" },
-          "borderJoin": { "func": "style@shape.border.join" },
-          "borderPattern": { "func": "style@shape.border.pattern" },
-          "repeatImage": { "func": "style@shape.repeat.image" },
-          "dash": { "func": "style@shape.dash" },
-          "border3d": { "func": "style@shape.border.3d" },
-          "dash3d": { "func": "style@shape.dash.3d" },
-          "dashPattern": { "func": "style@shape.dash.pattern" },
-          "dashOffset": { "func": "style@shape.dash.offset" },
-          "dashColor": { "func": "style@shape.dash.color" },
-          "dashWidth": { "func": "style@shape.dash.width" },
-      }
+        {
+            "type": "shape",
+            "rect": [5, 5, 500, 500],
+            "points": {
+                func: function (data) {
+                    if (data.a("point")) {
+                        var ar = data.a("point");
+                        var lst = new ht.List();
+                        var dlt = Math.PI * 2 / 20;
+                        var current = 0;
+                        for (i = 0; i < 20; i++) {
+                            var x = Math.cos(current) * ar[i] * 250;
+                            var y = Math.sin(current) * ar[i] * 250;
+                            current += dlt;
+                            lst.add(x);
+                            lst.add(y);
+                        }
+                        lst.add(250); lst.add(0);
+                        lst.add(0); lst.add(-250);
+                        lst.add(-250); lst.add(0);
+                        lst.add(0); lst.add(250);
+                        return lst.toArray();
+                    }
+                    else {
+                        var lst = new ht.List();
+                        var dlt = Math.PI * 2 / 20;
+                        var w = 250 * 0.6;
+                        var current = 0;
+                        for (i = 0; i < 20; i++) {
+                            var x = Math.cos(current) * w;
+                            var y = Math.sin(current) * w;
+                            current += dlt;
+                            lst.add(x);
+                            lst.add(y);
+                        }
+                        lst.add(250); lst.add(0);
+                        lst.add(0); lst.add(-250);
+                        lst.add(-250); lst.add(0);
+                        lst.add(0); lst.add(250);
+                        return lst.toArray();
+                    }
+                }
+            },
+            "segments": { "func": "style@segments", value: [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, , 2, 5] },
+            //"background": {"func":"style@shape.background" },
+            "borderWidth": 2,//{"func": "style@shape.border.width", value: 2 },
+            "borderColor": '#00FFFF',//{ "func": "style@shape.border.color", value: 'black' },
+            "gradient": { "func": "style@shape.gradient" },
+            "borderCap": { "func": "style@shape.border.cap" },
+            "gradientColor": { "func": "style@shape.gradient.color" },
+            "borderJoin": { "func": "style@shape.border.join" },
+            "borderPattern": { "func": "style@shape.border.pattern" },
+            "repeatImage": { "func": "style@shape.repeat.image" },
+            "dash": { "func": "style@shape.dash" },
+            "border3d": { "func": "style@shape.border.3d" },
+            "dash3d": { "func": "style@shape.dash.3d" },
+            "dashPattern": { "func": "style@shape.dash.pattern" },
+            "dashOffset": { "func": "style@shape.dash.offset" },
+            "dashColor": { "func": "style@shape.dash.color" },
+            "dashWidth": { "func": "style@shape.dash.width" },
+        }
     ]
 });
 
@@ -3035,137 +3035,137 @@ ht.Default.setImage('lrule', {
     "author": "wenyuan",
     "note": "标尺",
     "comps": [
-      {
-          "type": "shape",
-          "points": {
-              func: function (data) {
-                  var width = data.getWidth(), height = data.getHeight();
-                  return [2, 2, width - 2, 2]
-              }
-          },
-          "segments": [1, 2],
-          "background": { "func": "attr@background" },
-          "borderWidth": { "func": "attr@borderWidth", value: 1 },
-          "borderColor": { "func": "attr@borderColor", value: "black" }
-      },
-      {
-          "type": "shape",
-          "points": {
-              func: function (data) {
-                  var width = data.getWidth(), height = data.getHeight() - 4;
-                  return [width / 2, 2 + height / 8, width - 2, 2 + height / 8]
-              }
-          },
-          "segments": [1, 2],
-          "background": { "func": "attr@background" },
-          "borderWidth": { "func": "attr@borderWidth", value: 1 },
-          "borderColor": { "func": "attr@borderColor", value: "black" }
-      },
-       {
-           "type": "shape",
-           "points": {
-               func: function (data) {
-                   var width = data.getWidth(), height = data.getHeight() - 4;
-                   return [2, 2 + height / 4, width - 2, 2 + height / 4]
-               }
-           },
-           "segments": [1, 2],
-           "background": { "func": "attr@background" },
-           "borderWidth": { "func": "attr@borderWidth", value: 1 },
-           "borderColor": { "func": "attr@borderColor", value: "black" }
-       },
-       {
-           "type": "shape",
-           "points": {
-               func: function (data) {
-                   var width = data.getWidth(), height = data.getHeight() - 4;
-                   return [width / 2, 2 + 3 * (height / 8), width - 2, 2 + 3 * (height / 8)]
-               }
-           },
-           "segments": [1, 2],
-           "background": { "func": "attr@background" },
-           "borderWidth": { "func": "attr@borderWidth", value: 1 },
-           "borderColor": { "func": "attr@borderColor", value: "black" }
-       },
-       {
-           "type": "shape",
-           "points": {
-               func: function (data) {
-                   var width = data.getWidth(), height = data.getHeight() - 4;
-                   return [2, 2 + (height / 2), width - 2, 2 + (height / 2)]
-               }
-           },
-           "segments": [1, 2],
-           "background": { "func": "attr@background" },
-           "borderWidth": { "func": "attr@borderWidth", value: 1 },
-           "borderColor": { "func": "attr@borderColor", value: "black" }
-       },
-       {
-           "type": "shape",
-           "points": {
-               func: function (data) {
-                   var width = data.getWidth(), height = data.getHeight() - 4;
-                   return [width / 2, 2 + 5 * (height / 8), width - 2, 2 + 5 * (height / 8)]
-               }
-           },
-           "segments": [1, 2],
-           "background": { "func": "attr@background" },
-           "borderWidth": { "func": "attr@borderWidth", value: 1 },
-           "borderColor": { "func": "attr@borderColor", value: "black" }
-       },
-       {
-           "type": "shape",
-           "points": [2, 77, 12, 77],
-           "points": {
-               func: function (data) {
-                   var width = data.getWidth(), height = data.getHeight() - 4;
-                   return [2, 2 + 6 * (height / 8), width - 2, 2 + 6 * (height / 8)]
-               }
-           },
-           "segments": [1, 2],
-           "background": { "func": "attr@background" },
-           "borderWidth": { "func": "attr@borderWidth", value: 1 },
-           "borderColor": { "func": "attr@borderColor", value: "black" }
-       },
-       {
-           "type": "shape",
-           "points": {
-               func: function (data) {
-                   var width = data.getWidth(), height = data.getHeight() - 4;
-                   return [width / 2, 2 + 7 * (height / 8), width - 2, 2 + 7 * (height / 8)]
-               }
-           },
-           "segments": [1, 2],
-           "background": { "func": "attr@background" },
-           "borderWidth": { "func": "attr@borderWidth", value: 1 },
-           "borderColor": { "func": "attr@borderColor", value: "black" }
-       },
-       {
-           "type": "shape",
-           "points": {
-               func: function (data) {
-                   var width = data.getWidth(), height = data.getHeight();
-                   return [2, height - 2, width - 2, height - 2];
-               }
-           },
-           "segments": [1, 2],
-           "background": { "func": "attr@background" },
-           "borderWidth": { "func": "attr@borderWidth", value: 1 },
-           "borderColor": { "func": "attr@borderColor", value: "black" }
-       },
-       {
-           "type": "shape",
-           "points": {
-               func: function (data) {
-                   var width = data.getWidth(), height = data.getHeight();
-                   return [width - 2, 2, width - 2, height - 2];
-               }
-           },
-           "segments": [1, 2],
-           "background": { "func": "attr@background" },
-           "borderWidth": { "func": "attr@borderWidth1", value: 1 },
-           "borderColor": { "func": "attr@borderColor", value: "black" }
-       }
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight();
+                    return [2, 2, width - 2, 2]
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight() - 4;
+                    return [width / 2, 2 + height / 8, width - 2, 2 + height / 8]
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight() - 4;
+                    return [2, 2 + height / 4, width - 2, 2 + height / 4]
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight() - 4;
+                    return [width / 2, 2 + 3 * (height / 8), width - 2, 2 + 3 * (height / 8)]
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight() - 4;
+                    return [2, 2 + (height / 2), width - 2, 2 + (height / 2)]
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight() - 4;
+                    return [width / 2, 2 + 5 * (height / 8), width - 2, 2 + 5 * (height / 8)]
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": [2, 77, 12, 77],
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight() - 4;
+                    return [2, 2 + 6 * (height / 8), width - 2, 2 + 6 * (height / 8)]
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight() - 4;
+                    return [width / 2, 2 + 7 * (height / 8), width - 2, 2 + 7 * (height / 8)]
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight();
+                    return [2, height - 2, width - 2, height - 2];
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight();
+                    return [width - 2, 2, width - 2, height - 2];
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth1", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        }
     ]
 });
 
@@ -3175,163 +3175,163 @@ ht.Default.setImage('lrule10', {
     "author": "wenyuan",
     "note": "标尺",
     "comps": [
-      {
-          "type": "shape",
-          "points": {
-              func: function (data) {
-                  var width = data.getWidth(), height = data.getHeight();
-                  return [2, 2, width - 2, 2]
-              }
-          },
-          "segments": [1, 2],
-          "background": { "func": "attr@background" },
-          "borderWidth": { "func": "attr@borderWidth", value: 1 },
-          "borderColor": { "func": "attr@borderColor", value: "black" }
-      },
-      {
-          "type": "shape",
-          "points": {
-              func: function (data) {
-                  var width = data.getWidth(), height = data.getHeight() - 4;
-                  return [width / 2, 2 + height / 10, width - 2, 2 + height / 10]
-              }
-          },
-          "segments": [1, 2],
-          "background": { "func": "attr@background" },
-          "borderWidth": { "func": "attr@borderWidth", value: 1 },
-          "borderColor": { "func": "attr@borderColor", value: "black" }
-      },
-       {
-           "type": "shape",
-           "points": {
-               func: function (data) {
-                   var width = data.getWidth(), height = data.getHeight() - 4;
-                   return [2, 2 + height / 5, width - 2, 2 + height / 5]
-               }
-           },
-           "segments": [1, 2],
-           "background": { "func": "attr@background" },
-           "borderWidth": { "func": "attr@borderWidth", value: 1 },
-           "borderColor": { "func": "attr@borderColor", value: "black" }
-       },
-       {
-           "type": "shape",
-           "points": {
-               func: function (data) {
-                   var width = data.getWidth(), height = data.getHeight() - 4;
-                   return [width / 2, 2 + 3 * (height / 10), width - 2, 2 + 3 * (height / 10)]
-               }
-           },
-           "segments": [1, 2],
-           "background": { "func": "attr@background" },
-           "borderWidth": { "func": "attr@borderWidth", value: 1 },
-           "borderColor": { "func": "attr@borderColor", value: "black" }
-       },
-       {
-           "type": "shape",
-           "points": {
-               func: function (data) {
-                   var width = data.getWidth(), height = data.getHeight() - 4;
-                   return [2, 2 + 4 * (height / 10), width - 2, 2 + 4 * (height / 10)]
-               }
-           },
-           "segments": [1, 2],
-           "background": { "func": "attr@background" },
-           "borderWidth": { "func": "attr@borderWidth", value: 1 },
-           "borderColor": { "func": "attr@borderColor", value: "black" }
-       },
-       {
-           "type": "shape",
-           "points": {
-               func: function (data) {
-                   var width = data.getWidth(), height = data.getHeight() - 4;
-                   return [width / 2, 2 + 5 * (height / 10), width - 2, 2 + 5 * (height / 10)]
-               }
-           },
-           "segments": [1, 2],
-           "background": { "func": "attr@background" },
-           "borderWidth": { "func": "attr@borderWidth", value: 1 },
-           "borderColor": { "func": "attr@borderColor", value: "black" }
-       },
-       {
-           "type": "shape",
-           "points": [2, 77, 12, 77],
-           "points": {
-               func: function (data) {
-                   var width = data.getWidth(), height = data.getHeight() - 4;
-                   return [2, 2 + 6 * (height / 10), width - 2, 2 + 6 * (height / 10)]
-               }
-           },
-           "segments": [1, 2],
-           "background": { "func": "attr@background" },
-           "borderWidth": { "func": "attr@borderWidth", value: 1 },
-           "borderColor": { "func": "attr@borderColor", value: "black" }
-       },
-       {
-           "type": "shape",
-           "points": {
-               func: function (data) {
-                   var width = data.getWidth(), height = data.getHeight() - 4;
-                   return [width / 2, 2 + 7 * (height / 10), width - 2, 2 + 7 * (height / 10)]
-               }
-           },
-           "segments": [1, 2],
-           "background": { "func": "attr@background" },
-           "borderWidth": { "func": "attr@borderWidth", value: 1 },
-           "borderColor": { "func": "attr@borderColor", value: "black" }
-       },
-       {
-           "type": "shape",
-           "points": {
-               func: function (data) {
-                   var width = data.getWidth(), height = data.getHeight() - 4;
-                   return [2, 2 + 8 * (height / 10), width - 2, 2 + 8 * (height / 10)]
-               }
-           },
-           "segments": [1, 2],
-           "background": { "func": "attr@background" },
-           "borderWidth": { "func": "attr@borderWidth", value: 1 },
-           "borderColor": { "func": "attr@borderColor", value: "black" }
-       },
-     {
-         "type": "shape",
-         "points": {
-             func: function (data) {
-                 var width = data.getWidth(), height = data.getHeight()-4;
-                 return [width / 2, 2 + 9 * (height / 10), width - 2, 2 + 9 * (height / 10)]
-             }
-         },
-         "segments": [1, 2],
-         "background": { "func": "attr@background" },
-         "borderWidth": { "func": "attr@borderWidth", value: 1 },
-         "borderColor": { "func": "attr@borderColor", value: "black" }
-     },
-       {
-           "type": "shape",
-           "points": {
-               func: function (data) {
-                   var width = data.getWidth(), height = data.getHeight();
-                   return [2, height - 2, width - 2, height - 2];
-               }
-           },
-           "segments": [1, 2],
-           "background": { "func": "attr@background" },
-           "borderWidth": { "func": "attr@borderWidth", value: 1 },
-           "borderColor": { "func": "attr@borderColor", value: "black" }
-       },
-       {
-           "type": "shape",
-           "points": {
-               func: function (data) {
-                   var width = data.getWidth(), height = data.getHeight();
-                   return [width - 2, 2, width - 2, height - 2];
-               }
-           },
-           "segments": [1, 2],
-           "background": { "func": "attr@background" },
-           "borderWidth": { "func": "attr@borderWidth1", value: 1 },
-           "borderColor": { "func": "attr@borderColor", value: "black" }
-       }
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight();
+                    return [2, 2, width - 2, 2]
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight() - 4;
+                    return [width / 2, 2 + height / 10, width - 2, 2 + height / 10]
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight() - 4;
+                    return [2, 2 + height / 5, width - 2, 2 + height / 5]
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight() - 4;
+                    return [width / 2, 2 + 3 * (height / 10), width - 2, 2 + 3 * (height / 10)]
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight() - 4;
+                    return [2, 2 + 4 * (height / 10), width - 2, 2 + 4 * (height / 10)]
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight() - 4;
+                    return [width / 2, 2 + 5 * (height / 10), width - 2, 2 + 5 * (height / 10)]
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": [2, 77, 12, 77],
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight() - 4;
+                    return [2, 2 + 6 * (height / 10), width - 2, 2 + 6 * (height / 10)]
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight() - 4;
+                    return [width / 2, 2 + 7 * (height / 10), width - 2, 2 + 7 * (height / 10)]
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight() - 4;
+                    return [2, 2 + 8 * (height / 10), width - 2, 2 + 8 * (height / 10)]
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight() - 4;
+                    return [width / 2, 2 + 9 * (height / 10), width - 2, 2 + 9 * (height / 10)]
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight();
+                    return [2, height - 2, width - 2, height - 2];
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        },
+        {
+            "type": "shape",
+            "points": {
+                func: function (data) {
+                    var width = data.getWidth(), height = data.getHeight();
+                    return [width - 2, 2, width - 2, height - 2];
+                }
+            },
+            "segments": [1, 2],
+            "background": { "func": "attr@background" },
+            "borderWidth": { "func": "attr@borderWidth1", value: 1 },
+            "borderColor": { "func": "attr@borderColor", value: "black" }
+        }
     ]
 });
 
@@ -3634,7 +3634,7 @@ ht.Default.setImage('ProgressText3', {
                     var dig = data.a("dig");
                     if (dig == null)
                         dig = 0;
-                    var value = min +(max - min) * 0.6;
+                    var value = min + (max - min) * 0.6;
                     return value.toFixed(dig);
                 }
             },
@@ -3663,7 +3663,7 @@ ht.Default.setImage('ProgressText3', {
                     var dig = data.a("dig");
                     if (dig == null)
                         dig = 0;
-                    var value = min +(max - min) * 0.4;
+                    var value = min + (max - min) * 0.4;
                     return value.toFixed(dig);
                 }
             },
@@ -3692,7 +3692,7 @@ ht.Default.setImage('ProgressText3', {
                     var dig = data.a("dig");
                     if (dig == null)
                         dig = 0;
-                    var value = min +(max - min) * 0.2;
+                    var value = min + (max - min) * 0.2;
                     return value.toFixed(dig);
                 }
             },
@@ -3780,7 +3780,7 @@ ht.Default.setImage('ProgressText1', {
                     var dig = data.a("dig");
                     if (dig == null)
                         dig = 0;
-                    var value = min +(max - min) * 0.25;
+                    var value = min + (max - min) * 0.25;
                     return value.toFixed(dig);
                 }
             },
@@ -3809,7 +3809,7 @@ ht.Default.setImage('ProgressText1', {
                     var dig = data.a("dig");
                     if (dig == null)
                         dig = 0;
-                    var value = min +(max - min) * 0.5;
+                    var value = min + (max - min) * 0.5;
                     return value.toFixed(dig);
                 }
             },
@@ -3838,7 +3838,7 @@ ht.Default.setImage('ProgressText1', {
                     var dig = data.a("dig");
                     if (dig == null)
                         dig = 0;
-                    var value = min +(max - min) * 0.75;
+                    var value = min + (max - min) * 0.75;
                     return value.toFixed(dig);
                 }
             },
@@ -3925,7 +3925,7 @@ ht.Default.setImage('ProgressText4', {
                     var dig = data.a("dig");
                     if (dig == null)
                         dig = 0;
-                    var value = min +(max - min) * 0.2;
+                    var value = min + (max - min) * 0.2;
                     return value.toFixed(dig);
                 }
             },
@@ -3954,7 +3954,7 @@ ht.Default.setImage('ProgressText4', {
                     var dig = data.a("dig");
                     if (dig == null)
                         dig = 0;
-                    var value = min +(max - min) * 0.4;
+                    var value = min + (max - min) * 0.4;
                     return value.toFixed(dig);
                 }
             },
@@ -3983,7 +3983,7 @@ ht.Default.setImage('ProgressText4', {
                     var dig = data.a("dig");
                     if (dig == null)
                         dig = 0;
-                    var value = min +(max - min) * 0.6;
+                    var value = min + (max - min) * 0.6;
                     return value.toFixed(dig);
                 }
             },
@@ -4012,7 +4012,7 @@ ht.Default.setImage('ProgressText4', {
                     var dig = data.a("dig");
                     if (dig == null)
                         dig = 0;
-                    var value = min +(max - min) * 0.8;
+                    var value = min + (max - min) * 0.8;
                     return value.toFixed(dig);
                 }
             },

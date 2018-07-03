@@ -1,4 +1,4 @@
-﻿var stationconfig = false,
+var stationconfig = false,
     equipmentconfig = false,
     signalconfig = false
 checkStation = '',
@@ -13,7 +13,7 @@ function clearSelected(e) {
 function resettimer() {
     autoSaveTimer > 0 && window.clearInterval(autoSaveTimer), autoSaveTimer = window.setInterval("iead()", autoSaveInteval)
 }
-// 搜索图层
+
 function datavisible(e) {
     if (searchMode) {
         var t = !1;
@@ -35,12 +35,6 @@ function datavisible(e) {
                 o = e.a("tagname");
             for (o && (t = (o = o.toLowerCase()) == n), t || (o = e.a("vistagname")) && (t = (o = o.toLowerCase()) == n), t || (o = e.a("flashtagname")) && (t = (o = o.toLowerCase()) == n), t || (o = e.a("enbtagname")) && (t = (o = o.toLowerCase()) == n), i = 1; i < 10 && !((o = e.a("tagname" + i)) && (o = o.toLowerCase(), t = o == n)); i++);
         }
-        if (haspro){
-            var n = searchname.toLowerCase(),
-                o = e.a("station")+'.'+e.a('faci')+'.'+e.a('signal');
-            t = n == o.toLowerCase() 
-        }
-
         return t
     }
     var r = e.getLayer();
@@ -786,7 +780,7 @@ function tagconfig_init() {
                     onClicked: function () {
                         stationconfig = true;
                         equipmentconfig = false,
-                        signalconfig = false
+                            signalconfig = false
                         showTagsDialog(function (e) {//e指选中的
                             var t = 0;
                             e.each(function (e) {
@@ -811,7 +805,7 @@ function tagconfig_init() {
                         }
                         stationconfig = false;
                         equipmentconfig = true,
-                        signalconfig = false
+                            signalconfig = false
                         showTagsDialog(function (e) {
                             console.log(e)
                             e.each(function (e) {
@@ -835,7 +829,7 @@ function tagconfig_init() {
                         }
                         stationconfig = false;
                         equipmentconfig = false,
-                        signalconfig = true
+                            signalconfig = true
                         showTagsDialog(function (e) {
                             var t = 1;
                             e.each(function (e) {
@@ -1004,8 +998,8 @@ function tagreplace_init() {
                     onClicked: function () {
                         showTagsDialog(function (e) {
                             e.each(function (e) {
-                                 var t = e.a("station")+ '.'+e.a("faci")+'.'+e.a('signal');
-                                t = "" == t ? e.a("id") : t ,
+                                var t = e.a("plug");
+                                t = "" == t ? e.a("id") : t + "." + e.a("id"),
                                     tagreplaceformPane.v("oldname", t.toUpperCase())
                             })
                         }, !0)
@@ -1022,8 +1016,8 @@ function tagreplace_init() {
                     label: "...", onClicked: function () {
                         showTagsDialog(function (e) {
                             e.each(function (e) {
-                                var t = e.a("station") + '.' + e.a("faci") + '.' + e.a('signal');
-                                t = "" == t ? e.a("id") : t,tagreplaceformPane.v("newname", t.toUpperCase())
+                                var t = e.a("plug");
+                                t = "" == t ? e.a("id") : t + "." + e.a("id"), tagreplaceformPane.v("newname", t.toUpperCase())
                             })
                         })
                     }
@@ -1035,13 +1029,9 @@ function tagreplace_init() {
             checkBox: { label: "全部匹配", selected: !0 }
         }, {
             button: {
-                label: "替换", 
-                onClicked: function () {
-                    var e = 0, 
-                        t = tagreplaceformPane.v("ck"), 
-                        a = tagreplaceformPane.v("oldname").toLowerCase(),
-                        n = tagreplaceformPane.v("oldname"), 
-                        o = tagreplaceformPane.v("newname");
+                label: "替换", onClicked: function () {
+                    var e = 0, t = tagreplaceformPane.v("ck"), a = tagreplaceformPane.v("oldname").toLowerCase(),
+                        n = tagreplaceformPane.v("oldname"), o = tagreplaceformPane.v("newname");
                     "" != a && "" != o && (dm.sm().size() > 0 ? (dm.sm().toSelection().each(function (r) {
                         var l = r.a("tagname");
                         for (l && (t ? (l = l.toLowerCase()) == a && (r.a("tagname", o), e++) : l != (d = l.replace(new RegExp(n, "gi"), o)) && (r.a("tagname", d), e++)), (l = r.a("vistagname")) && (t ? (l = l.toLowerCase()) == a && (r.a("vistagname", o), e++) : l != (d = l.replace(new RegExp(n, "gi"), o)) && (r.a("vistagname", d), e++)), (l = r.a("flashtagname")) && (t ? (l = l.toLowerCase()) == a && (r.a("flashtagname", o), e++) : l != (d = l.replace(new RegExp(n, "gi"), o)) && (r.a("flashtagname", d), e++)), (l = r.a("enbtagname")) && (t ? (l = l.toLowerCase()) == a && (r.a("enbtagname", o), e++) : l != (d = l.replace(new RegExp(n, "gi"), o)) && (r.a("enbtagname", d), e++)), i = 1; i < 10; i++) if (l = r.a("tagname" + i)) if (t) (l = l.toLowerCase()) == a && (r.a("tagname" + i, o), e++); else {
@@ -1172,10 +1162,8 @@ function find_init() {
                     onClicked: function () {
                         showTagsDialog(function (e) {
                             e.each(function (e) {
-                                console.log(e)
-                                var t = e.a("station")+ '.'+e.a("faci")+'.'+e.a('signal');
-                                t = "" == t ? e.a("id") : t , findPane.v('name',t.toUpperCase())
-                                // t = "" == t ? e.a("id") : t + "." + e.a("id"), tagreplaceformPane.v("name", t.toUpperCase())
+                                var t = e.a("plug");
+                                t = "" == t ? e.a("id") : t + "." + e.a("id"), tagreplaceformPane.v("name", t.toUpperCase())
                             })
                         }, !0)
                     }
@@ -1195,26 +1183,16 @@ function find_init() {
                 checkBox: { label: "文本内容", selected: !1 }
             }], [.1, .1, .1]),
 
-        findPane.addRow([
-            {
-                id: "pro",
-                checkBox: { label: "业务属性", selected: !1 }
-            },{},{}], [.1, .1, .1]),
-
         findPane.addRow([{},
         {
             button: {
                 label: "查找",
                 onClicked: function () {
                     hashttag = findPane.v("httag"),
-                    hastagname = findPane.v("tagname"),
-                    hastext = findPane.v("text"),
-                    haspro = findPane.v('pro'),
-
-                    "" != (searchname = findPane.v("name")) ? dm.size() > 0 && (searchMode = !0, g2d.iv(), treeView.invalidateModel()) : (searchMode = !1, g2d.iv(),
-                        treeView.invalidateModel())
-
-                    console.log(treeView.invalidateModel())
+                        hastagname = findPane.v("tagname"),
+                        hastext = findPane.v("text"),
+                        "" != (searchname = findPane.v("name")) ? dm.size() > 0 && (searchMode = !0, g2d.iv(), treeView.invalidateModel()) : (searchMode = !1, g2d.iv(),
+                            treeView.invalidateModel())
                 }
             }
         },
@@ -1237,7 +1215,7 @@ function find_init() {
             restoreToolTip: "对象查找窗口",
             titleIcon: "",
             width: 260,
-            contentHeight: 120,
+            contentHeight: 90,
             minimizable: !1,
             content: findPane,
             expanded: !0
@@ -1326,21 +1304,21 @@ function viewTags(e) {
             },
             {
                 name: "station",
-                width: 180,
+                width: 160,
                 displayName: "厂站号",
                 accessType: "attr",
                 align: "left"
             },
             {
                 name: "faci",
-                width: 200,
+                width: 110,
                 displayName: "设备号",
                 accessType: "attr",
                 align: "left"
             },
             {
                 name: "signal",
-                width: 180,
+                width: 90,
                 displayName: "信号",
                 accessType: "attr",
                 align: "left"
@@ -1348,13 +1326,12 @@ function viewTags(e) {
         ]);
     var o = 1;
     e.each(function (e) {
-        console.log(e)
         var t = new ht.Data;
         t.a({
             index: o,
             station: e.a('station'),
             faci: e.a('faci'),
-            signal: e.a('signal'),
+            signal: e.a('signal')
         }),
             o++ ,
             n.add(t)
@@ -1405,7 +1382,7 @@ function viewTags(e) {
         closable: !0,
         draggable: !0,
         contentPadding: 0,
-        width: 600,
+        width: 400,
         height: 500,
         content: a,
         borderWidth: 1,
@@ -2542,10 +2519,10 @@ var getEditorSelection = function () {
                 n && dataModel.remove(n);
                 var i = new ht.Node;
                 i.setImage(e);
-                var o = t.width, 
-                    r = t.height;
-                // var o = 600,
-                //     r = 300;
+                // var o = t.width, 
+                //     r = t.height;
+                var o = 600,
+                    r = 300;
                 i.setWidth(o),
                     i.setHeight(r),
                     i.setPosition(.5 * o, .5 * r),
@@ -3029,30 +3006,22 @@ var getEditorSelection = function () {
                                 dataModel.sm().cs();
                                 var t = 50;
                                 e.each(function (e) {
-                                    console.log(e)
-                                    if ("" != e.a("station")) {
-                                        var a = (e.a("station") + "." + e.getId("id")).toUpperCase(),
-                                        n = new ht.Node;
-                                        n.setImage("TagValue")
-                                        if(e.a('station')){
-                                            n.a('station',e.a('station'))
-                                            n.a('station_id', e.a('station_id'))
-                                        }
-                                        if (e.a('faci')) {
-                                            n.a('faci', e.a('faci'))
-                                            n.a('faci_id', e.a('faci_id'))
-                                        }
-                                        if (e.a('signal')) {
-                                            n.a('signal', e.a('signal'))
-                                            n.a('signal_id', e.a('signal_id'))
-                                        }
-                                    
-                                        n.setTag('标签值' + e.getId("id"));
-                                        n.setIcon("number")
+                                    if ("" != e.a("plug")) {
+                                        var a = (e.a("plug") + "." + e.a("id")).toUpperCase(),
+                                            n = new ht.Node;
+                                        if (n.setImage("TagValue"), n.a("tagname", a), "" != e.a("desc") && n.a("ToolTip", e.a("desc")), n.setWidth(80), "Boolean" == e.a("type")) n.a("tagvalue", "False");
+                                        else if ("String" == e.a("type")) n.a("tagvalue", e.a("id"));
+                                        else if (e.a("unit") && n.a("unit", e.a("unit")), e.a("digcount")) {
+                                            var i = e.a("digcount");
+                                            n.a("digcount", i);
+                                            for (var o = "0.", r = 0; r < i; r++) o += "0";
+                                            n.a("tagvalue", o)
+                                        } else n.a("tagvalue", "0");
+                                        n.setTag(a);
                                         var l = rulerFrame.getComponentViewRect(g2d);
                                         n.setPosition(l.x + 80, l.y + t),
                                             t += 30,
-                                            n.setLayer("textLayer"),
+                                            n.setLayer("nodeLayer"),
                                             dataModel.add(n),
                                             dataModel.sm().as(n)
                                     }
@@ -3504,7 +3473,7 @@ var getEditorSelection = function () {
                 saving = !0;
                 var a = "";
                 dataModel.each(function (e) {
-                    // console.log(e.a("param"))
+                    console.log(e.a("param"))
                     e instanceof ht.LinkImg && e.a("filename") && ("" == a ? (a = e.a("filename"), e.a("param") && (a += ":" + e.a("param"))) : (a += "," + e.a("filename"), e.a("param") && (a += ":" + e.a("param"))))
                 }),
                     e.links = a;
@@ -3552,7 +3521,7 @@ var getEditorSelection = function () {
                         }),
                         t.show()
                 }, "json"),
-                    // console.log(t)
+                    console.log(t)
                 t && t()
             }
         } else saveSceneAs()
@@ -3606,6 +3575,8 @@ var getEditorSelection = function () {
                         var t = HT2dEditor.currScene.filename;
                         "" == t ? e.val("newfile") : e.val(t + "1")
                     }
+                },
+                e.onHidden = function () {
                 },
                 e.show()
         }
@@ -3761,20 +3732,19 @@ var getEditorSelection = function () {
     },
     // 厂站号-设备号-信号
     showTagsDialog = function (e, t) {
-        console.log(serverTags)
+        // console.log(serverTags)
         serverTags ? callTagsDialog(e, t) :
-        (showLoading(),
-                $.post("http://180.96.28.83:808/jeesitezt/f/api/lac", {
-                rows: _rows,
-                page: _scurrentPage
-            },
-                function (a) {
-                    serverTags = a,
-                    _spagecount = a.pagecount,
-                        console.log(serverTags)
-                    callTagsDialog(e, t),
-                    hideLoading()
-                }, "json"))
+            (showLoading(),
+                $.post("https://www.easy-mock.com/mock/5b06298aa5fec41287e785e8/hightopo/pipe/station", {
+                    rows: _rows,
+                    page: _scurrentPage
+                },
+                    function (a) {
+                        serverTags = a,
+                            _spagecount = a.pagecount,
+                            callTagsDialog(e, t),
+                            hideLoading()
+                    }, "json"))
     },
 
     // 处理所得的数据
@@ -3784,45 +3754,23 @@ var getEditorSelection = function () {
             newequipments = [],
             newsignal = [];
         r.forEach(function (e) {
-            newstation.push({
-                station_name:e.station_name,
-                station_id:e.station_id
-            });
-            
-            newequipments.push({
-                station_id: e.station_id,
-                equipments: { equipment_name: e.equipment_name, equipment_id: e.equipment_id}
-            });
-
-            newsignal.push({
-                station_id: e.station_id,
-                equipment_id: e.equipment_id,
-                signal: { signal_name: e.signal_name, signal_id: e.signal_id,current_value:e.current_value}
-            })
-        });
-        // 去厂
-        var hash1 = {};
-        newstation = newstation.reduce(function (item, next) {
-            hash1[next.station_id] ? '' : hash1[next.station_id] = true && item.push(next);
-            return item
-        }, []) 
-    
-        // 去设
-        var arr = [newequipments[0]];
-        newequipments.map(item=>{
-            var isSame = false;
-            arr.map(value=>{
-                if(item.station_id == value.station_id){
-                    if(item.equipments.equipment_id==value.equipments.equipment_id){
-                        isSame = true;
+            $.each(e, function (name, value) {
+                "equipments" == name && value.map(function (item) {
+                    var obj = {
+                        station_id: e.station_id,
+                        equipments: item,
                     }
-                }
-            })
-            if(!isSame){
-                arr.push(item)
-            }
-        })
-        newequipments = arr;
+                    newequipments.push(obj);
+                    var obj1 = {
+                        station_id: e.station_id,
+                        equipment_id: item.equipment_id,
+                        signal: item.signals
+                    }
+                    newsignal.push(obj1)
+                })
+            });
+            newstation.push(e);
+        });
         console.log(newstation, newequipments, newsignal)
         serverTags.total = newstation.length
         if (serverTags && serverTags.total > 0) {
@@ -3854,7 +3802,7 @@ var getEditorSelection = function () {
                     },
                     {
                         name: "station",
-                        width: 250,
+                        width: 150,
                         displayName: "厂站号",
                         accessType: "attr",
                         align: "left"
@@ -3888,7 +3836,7 @@ var getEditorSelection = function () {
                     },
                     {
                         name: "faci",
-                        width: 250,
+                        width: 150,
                         displayName: "设备号",
                         accessType: "attr",
                         align: "left"
@@ -3923,7 +3871,7 @@ var getEditorSelection = function () {
                     },
                     {
                         name: "signal",
-                        width: 250,
+                        width: 150,
                         displayName: "信号",
                         accessType: "attr",
                         align: "left"
@@ -3955,21 +3903,21 @@ var getEditorSelection = function () {
                     },
                     {
                         name: "station",
-                        width: 140,
+                        width: 160,
                         displayName: "厂站号",
                         accessType: "attr",
                         align: "left"
                     },
                     {
                         name: "faci",
-                        width: 240,
+                        width: 110,
                         displayName: "设备号",
                         accessType: "attr",
                         align: "left"
                     },
                     {
                         name: "signal",
-                        width: 180,
+                        width: 90,
                         displayName: "信号",
                         accessType: "attr",
                         align: "left"
@@ -4009,112 +3957,111 @@ var getEditorSelection = function () {
                 checkEquiArray.forEach(function (e) {
                     var t = browser_createTag(l, e);
                     l++ ,
-                    i.add(t);
+                        i.add(t);
                 })
 
             } else if (signalconfig) {
                 newsignal.forEach(function (e) {
                     if (e.station_id == checkStation) {
                         if (e.equipment_id == checkEquipment) {
-                            var t = browser_createTag(l, e.signal);
-                            l++ ,
-                            i.add(t);
+                            e.signal.map(function (item) {
+                                var t = browser_createTag(l, item);
+                                l++ ,
+                                i.add(t);
+                            })
                         }
                     }
                 })
-            } else  {
+            } else {
                 var g = 1;
-                var result = r ? r : $.post('http://180.96.28.83:808/jeesitezt/f/api/lac',function(result){return result})
-
-                result.map(function (e) {
+                $.post('https://www.easy-mock.com/mock/5b06298aa5fec41287e785e8/hightopo/pipe/current_value', { info: 'info' }, function (result) {
+                    result.map(function (e) {
                         var t = new ht.Data;
                         t.a({
                             index: g,
                             station: e.station_name,
                             faci: e.equipment_name,
-                            signal: e.signal_name,
-                            station_id: e.station_id,
-                            faci_id: e.equipment_id,
-                            signal_id: e.signal_id
+                            signal: e.signal_name
                         }),
                             g++ ,
                             i.add(t)
                     })
+                })
             }
 
             var d = o.getTableHeader();
             d.setColumnLineColor("#C8C8C8"),
-            d.setInsertColor("#6DCDF3"),
-            d.getLabelFont = function (e) {
-                return "bold 12px Arial"
-            },
-            d.getView().style.background = "#F1F1F1";
+                d.setInsertColor("#6DCDF3"),
+                d.getLabelFont = function (e) {
+                    return "bold 12px Arial"
+                },
+                d.getView().style.background = "#F1F1F1";
             var s = o.getTableView();
             s.setSelectBackground("#E1E1E1"),
-            s.setRowLineColor("#EDEDED"),
-            s.setColumnLineVisible(!1),
-            s.setRowHeight(22),
-            s.setAutoHideScrollBar(!1),
-            s.drawRowBackground = function (e, t, a, n, i, o, r) {
-                e.fillStyle = a ? "#87A6CB" : "#FAFAFA",
-                    e.beginPath(),
-                    e.rect(n, i, o, r),
-                    e.fill()
-            },
-            a.getView().style.background = "#E1E1E1";
+                s.setRowLineColor("#EDEDED"),
+                s.setColumnLineVisible(!1),
+                s.setRowHeight(22),
+                s.setAutoHideScrollBar(!1),
+                s.drawRowBackground = function (e, t, a, n, i, o, r) {
+                    e.fillStyle = a ? "#87A6CB" : "#FAFAFA",
+                        e.beginPath(),
+                        e.rect(n, i, o, r),
+                        e.fill()
+                },
+                a.getView().style.background = "#E1E1E1";
 
             // 分情况过
-            
-                s.isVisible = function (e) {
-                    if (stationconfig) {
-                        if (e.isEmpty()) {
-                            var y = a.v("station"),
-                                o = !0;
-                            var l = e.a("station") && e.a("station").toLowerCase().indexOf(y.toLowerCase()) >= 0;
-                            o && "" != t && (o = l)
-                        }
-                        return o
+
+            s.isVisible = function (e) {
+                if (stationconfig) {
+                    if (e.isEmpty()) {
+                        var y = a.v("station"),
+                            o = !0;
+                        var l = e.a("station") && e.a("station").toLowerCase().indexOf(y.toLowerCase()) >= 0;
+                        o && "" != t && (o = l)
                     }
-                    if(equipmentconfig){
-                        if (e.isEmpty()) {
-                            var y = a.v("faci"),
-                                o = !0;
-                            var m = e.a("faci") && e.a("faci").toLowerCase().indexOf(y.toLowerCase()) >= 0;
-
-                            o && "" != t && (o = m)
-                        }
-                        return o
-                    }
-                    if (signalconfig) {
-                        if (e.isEmpty()) {
-                            var y = a.v("signal"),
-                                o = !0;
-
-                            var n = e.a("signal") && e.a("signal").toLowerCase().indexOf(y.toLowerCase()) >= 0;
-
-                            o && "" != t && (o = n)
-
-                        }
-                        return o
-                    } else{
-                        if (e.isEmpty()) {
-                            var y = a.v("seach"),
-                                o = !0;
-                            var l = e.a("station") && e.a("station").toLowerCase().indexOf(y.toLowerCase()) >= 0;
-                            var m = e.a("faci") && e.a("faci").toLowerCase().indexOf(y.toLowerCase()) >= 0;
-                            var n = e.a("signal") && e.a("signal").toLowerCase().indexOf(y.toLowerCase()) >= 0;
-
-                            o && "" != t && (o = l || m || n)
-
-                        }
-                        return o
-                    }
+                    return o
                 }
+                if (equipmentconfig) {
+                    if (e.isEmpty()) {
+                        var y = a.v("faci"),
+                            o = !0;
+                        var m = e.a("faci") && e.a("faci").toLowerCase().indexOf(y.toLowerCase()) >= 0;
+
+                        o && "" != t && (o = m)
+                    }
+                    return o
+                }
+                if (signalconfig) {
+                    if (e.isEmpty()) {
+                        var y = a.v("signal"),
+                            o = !0;
+
+                        var n = e.a("signal") && e.a("signal").toLowerCase().indexOf(y.toLowerCase()) >= 0;
+
+                        o && "" != t && (o = n)
+
+                    }
+                    return o
+                } else {
+                    if (e.isEmpty()) {
+                        var y = a.v("seach"),
+                            o = !0;
+                        var l = e.a("station") && e.a("station").toLowerCase().indexOf(y.toLowerCase()) >= 0;
+                        var m = e.a("faci") && e.a("faci").toLowerCase().indexOf(y.toLowerCase()) >= 0;
+                        var n = e.a("signal") && e.a("signal").toLowerCase().indexOf(y.toLowerCase()) >= 0;
+
+                        o && "" != t && (o = l || m || n)
+
+                    }
+                    return o
+                }
+            }
             var m = "(" + _scurrentPage + "/" + _spagecount + ")",
                 f = new ht.widget.Dialog;
             f.setConfig({
                 title: "标签浏览器" + m,
-                width: 600,
+                width: 500,
                 height: 450,
                 closable: !0,
                 draggable: !0,
@@ -4122,69 +4069,65 @@ var getEditorSelection = function () {
                 content: n,
                 maximizable: !0,
                 buttons: [
-                {
-                    label: "上一页",
-                    action: function (e, t) {
-                        _scurrentPage > 1 && (_scurrentPage-- , i.clear(), 1 == _scurrentPage && createLocalTags(i), $.post("server/scada/gettagstable.ashx", {
-                            rows: _rows,
-                            page: _scurrentPage
-                        }, function (e) {
-                            console.log(e)
-                            serverTags = e, _spagecount = e.pagecount, m = "标签浏览器(" + _scurrentPage + "/" + _spagecount + ")", f.setTitle(m);
-                            var t = serverTags.rows;
-                            l = (_scurrentPage - 1) * _rows + 1, t.forEach(function (e) {
-                                var t = browser_createTag(l, e);
-                                l++ , i.add(t)
-                            })
-                        }, "json")),
-                            _scurrentPage < _spagecount && (w._background = "rgb(231, 76, 60)", w._selectBackground = "rgb(196, 65, 51)", w.iv()),
-                            1 == _scurrentPage && (h._background = "rgb(128, 128, 128)", h._selectBackground = "rgb(128, 128, 128)")
-                    }
-                }, {
-                    label: "下一页",
-                    action: function (e, t) {
-                        _scurrentPage < _spagecount && (_scurrentPage++ , i.clear(), $.post("server/scada/gettagstable.ashx", {
-                            rows: _rows,
-                            page: _scurrentPage
-                        }, function (e) {
-                            serverTags = e, _spagecount = e.pagecount, m = "标签浏览器(" + _scurrentPage + "/" + _spagecount + ")", f.setTitle(m);
-                            var t = serverTags.rows;
-                            l = (_scurrentPage - 1) * _rows + 1, t.forEach(function (e) {
-                                var t = browser_createTag(l, e);
-                                l++ , i.add(t)
-                            })
-                        }, "json")),
-                            _scurrentPage == _spagecount && (w._background = "rgb(128, 128, 128)", w._selectBackground = "rgb(128, 128, 128)"),
-                            _scurrentPage > 1 && (h._background = "rgb(231, 76, 60)", h._selectBackground = "rgb(196, 65, 51)", h.iv())
-                    }
-                }, {
-                    label: "重新加载",
-                    action: function (e, t) {
-                        reload(function (e) {
-                            0 == e.id ? (i.clear(), _scurrentPage = 1, $.post("http://180.96.28.83:808/jeesitezt/f/api/lac", {
+                    {
+                        label: "上一页",
+                        action: function (e, t) {
+                            _scurrentPage > 1 && (_scurrentPage-- , i.clear(), 1 == _scurrentPage && createLocalTags(i), $.post("server/scada/gettagstable.ashx", {
                                 rows: _rows,
                                 page: _scurrentPage
                             }, function (e) {
-                                serverTags = e,
-                                _spagecount = e.pagecount?e.pagecount:1;
-                                var t = serverTags.rows,
-                                    a = 1;
-                                createLocalTags(i),
-                                    t.forEach(function (e) {
-                                        var t = browser_createTag(a, e);
-                                        a++ , i.add(t)
-                                    })
-                            }, "json")) : alert(e.message)
-                        })
-                    }
-                }, {
-                    label: "确定", action: function (t, a) {
-                        if (f.hide(), e) {
-                            var n = i.getSelectionModel().toSelection();
-                            // console.log(i.getSelectionModel().size())选中个数，同n.length
-                            n && e(n);
-                            if(n.length>0){
-                                // 选中的赋值
+                                serverTags = e, _spagecount = e.pagecount, m = "标签浏览器(" + _scurrentPage + "/" + _spagecount + ")", f.setTitle(m);
+                                var t = serverTags.rows;
+                                l = (_scurrentPage - 1) * _rows + 1, t.forEach(function (e) {
+                                    var t = browser_createTag(l, e);
+                                    l++ , i.add(t)
+                                })
+                            }, "json")),
+                                _scurrentPage < _spagecount && (w._background = "rgb(231, 76, 60)", w._selectBackground = "rgb(196, 65, 51)", w.iv()),
+                                1 == _scurrentPage && (h._background = "rgb(128, 128, 128)", h._selectBackground = "rgb(128, 128, 128)")
+                        }
+                    }, {
+                        label: "下一页",
+                        action: function (e, t) {
+                            _scurrentPage < _spagecount && (_scurrentPage++ , i.clear(), $.post("server/scada/gettagstable.ashx", {
+                                rows: _rows,
+                                page: _scurrentPage
+                            }, function (e) {
+                                serverTags = e, _spagecount = e.pagecount, m = "标签浏览器(" + _scurrentPage + "/" + _spagecount + ")", f.setTitle(m);
+                                var t = serverTags.rows;
+                                l = (_scurrentPage - 1) * _rows + 1, t.forEach(function (e) {
+                                    var t = browser_createTag(l, e);
+                                    l++ , i.add(t)
+                                })
+                            }, "json")),
+                                _scurrentPage == _spagecount && (w._background = "rgb(128, 128, 128)", w._selectBackground = "rgb(128, 128, 128)"),
+                                _scurrentPage > 1 && (h._background = "rgb(231, 76, 60)", h._selectBackground = "rgb(196, 65, 51)", h.iv())
+                        }
+                    }, {
+                        label: "重新加载",
+                        action: function (e, t) {
+                            reload(function (e) {
+                                0 == e.id ? (i.clear(), _scurrentPage = 1, $.post("https://www.easy-mock.com/mock/5b06298aa5fec41287e785e8/hightopo/pipe/station", {
+                                    rows: _rows,
+                                    page: _scurrentPage
+                                }, function (e) {
+                                    serverTags = e,
+                                        _spagecount = e.pagecount;
+                                    var t = serverTags.rows,
+                                        a = 1;
+                                    createLocalTags(i),
+                                        t.forEach(function (e) {
+                                            var t = browser_createTag(a, e);
+                                            a++ , i.add(t)
+                                        })
+                                }, "json")) : alert(e.message)
+                            })
+                        }
+                    }, {
+                        label: "确定", action: function (t, a) {
+                            if (f.hide(), e) {
+                                var n = i.getSelectionModel().toSelection();
+                                n && e(n);
                                 var s = i.getSelectionModel().getLastData().a('station_id')
                                 var t = i.getSelectionModel().getLastData().a('faci_id')
                                 var p = i.getSelectionModel().getLastData().a('signal_id')
@@ -4200,21 +4143,21 @@ var getEditorSelection = function () {
                                 if (signalconfig) {
                                     p ? checkSignal = p : ''
                                 }
+
                             }
                         }
-                    }
-                }, {
-                    label: "取消", action: function (e, t) {
-                        f.hide()
-                        stationconfig=false;
-                        equipmentconfig=false;
-                        signalconfig=false;
-                    }
-                }],
+                    }, {
+                        label: "取消", action: function (e, t) {
+                            f.hide()
+                            stationconfig = false;
+                            equipmentconfig = false;
+                            signalconfig = false;
+                        }
+                    }],
                 buttonsAlign: "right",
             });
             // 消失回调，让分类的配置3个都为false，这样视图-标签浏览器就可以全部显示
-            f.onHidden=function() {
+            f.onHidden = function () {
                 stationconfig = false;
                 equipmentconfig = false;
                 signalconfig = false;
@@ -4222,22 +4165,22 @@ var getEditorSelection = function () {
 
             var p = new ht.widget.ContextMenu;
             p.addTo(f.getView()),
-            p.setItems([]),
-            s.onDataDoubleClicked = function (t) {
-                if (f.hide(), e) {
-                    var a = new ht.List;
-                    a.add(t), e(a)
-                }
-            },
-            f.onShown = function () {
-                a.redraw()
-            };
+                p.setItems([]),
+                s.onDataDoubleClicked = function (t) {
+                    if (f.hide(), e) {
+                        var a = new ht.List;
+                        a.add(t), e(a)
+                    }
+                },
+                f.onShown = function () {
+                    a.redraw()
+                };
             var h = f.$42d[0],
                 w = f.$42d[1],
                 b = f.$42d[2];
             "" == username && (b._background = "rgb(128, 128, 128)", b._selectBackground = "rgb(128, 128, 128)"), h._background = "rgb(128, 128, 128)",
-            h._selectBackground = "rgb(128, 128, 128)",
-            f.show()
+                h._selectBackground = "rgb(128, 128, 128)",
+                f.show()
         }
     };
 function browser_createTag(e, t) {

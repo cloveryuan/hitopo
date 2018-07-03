@@ -3378,30 +3378,26 @@ snumber_properties = [
 ];
 
 // 业务属性
-管道_properties = [
+professional_properties = [
     {
         categoryName: 'P业务',
         name:'station',
         displayName:'厂站号',
         accessType:'attr',
-        editable:true,
+        editable:false,
     },
     {
         categoryName: 'P业务',
         name:'faci',
         displayName: '设备号',
         accessType: 'attr',
-        editable: true,
+        editable: false,
     },
     {
         categoryName: 'P业务',
         name:'signal',
         displayName: '信号',
-        accessType: 'style',
-        enum: {
-            values: ['强', '弱', '中']
-        },
-        editable: true,
+        accessType: 'attr',
+        editable: false,
     }
 ]
-

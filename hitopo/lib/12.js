@@ -1,4 +1,4 @@
-﻿tagsList = new ht.List,
+tagsList = new ht.List,
 _playbacktagsList = new ht.List,
 _playbackTags = "",
 valuechangedcallback = null,
@@ -25,9 +25,6 @@ sys_blink = false,
 taginfoPane = null,
 tagformPane = null;
 // iframe初始值为false
-var idAll = [];//存放有厂站号id，设备号id，信号id**
-var idAllNode = []//存放有厂站号id，设备号id，信号id的图元**
-var gt = 0;
 
 function init() {
     updateList = new ht.List, 
@@ -162,7 +159,6 @@ function init() {
             else if (a instanceof ht.LinkImg) ; 
 
             // 交互
-  
             else if ((e = a.a("station")) && (a.values = [], a.a("dchange") && (p += "\r\nfunction fun_dchange_" + a.getId() + "(data){" + a.a("dchange") + "\r\n}\r\n")), a instanceof ht.LiveNode) {
                 var t = a.a("bclick");
                 t && (s += "\r\nfunction fun_nclick_" + a.getId() + "(data,e,values){" + t + "\r\n}\r\n");
@@ -179,22 +175,7 @@ function init() {
                 r && (s += "\r\nfunction fun_nclick_" + a.getId() + "(data,e,values){" + r + "\r\n}\r\n")
             }
             console.log(s)
-
-            // 存放所有含有厂站号——设备号——信号的图元 
-            console.log(a)
-            if (a.a('station_id') && a.a('faci_id') && a.a('signal_id')){
-                var idA = {
-                    index: gt,
-                    station_id: a.a('station_id'),
-                    equipment_id: a.a('faci_id'),
-                    signal_id: a.a('signal_id'),
-                }
-                gt++
-                idAllNode.push(a)//存放含有业务属性的图元
-                idAll.push(idA)//存放含有业务属性的几个Id
-            } 
-        })
-      
+        }), 
         o.each(function (a) {//ht.script，向导和扩展里面的都是这个类
             if (dataModel.remove(a), n = a.a("type") || "初始化脚本", "初始化脚本" == n ? c += "\r\n" + a.a("script") || "\r\n" : "动画脚本" == n ? u += "\r\n" + a.a("script") || "\r\n" : "全局脚本" == n ? g += "\r\n" + a.a("script") || "\r\n" : "数据更新脚本" == n && (m += "\r\n" + a.a("script") || "\r\n"), a.a("html")) {
                 var e = a.getPosition(), 
@@ -295,7 +276,7 @@ function init() {
         // 全局脚本
         "" != g && ((b = document.createElement("script")).type = "text/javascript", 
             b.text = g, document.body.appendChild(b)), 
-        // dchange data
+        // dchange
         "" != p && ((b = document.createElement("script")).type = "text/javascript", 
             b.text = p,console.log(b), document.body.appendChild(b)),
          //初始化脚本代码
@@ -336,8 +317,7 @@ function init() {
             a.a("flash") ? flashList.add(a) : a.a("flashtagname") && (a.s("shape.background") || a.s("shape.border.color")) && (flashList.add(a), a.background = a.s("shape.background"), a.bordercolor = a.s("shape.border.color")), (a.a("tagname") || a.a("vistagname") || a.a("enbtagname")) && updateList.add(a)
         }), 
         isRuning = true, 
-            "" != tags && (update_scada(), updateTimerID = setInterval(update_scada, ht.dataRate)), 
-        "" != tags && (current_value(), setInterval(current_value,5000)), 
+        "" != tags && (update_scada(), updateTimerID = setInterval(update_scada,htconfig.dataRate)), 
         animTimerID = setInterval(anim_scada, htconfig.animRate), 
         window.orientation && (view_orient(), $(window).bind("orientationchange", function (a) {
             view_orient()
@@ -349,6 +329,22 @@ function init() {
         console.log(a)
         return 1 == a ? parent.zoomReset() : a > 1 ? parent.zoomIn(true) : parent.zoomOut(true), 1
     })
+   
+    var second = setInterval(function(){
+        var data = new Date();
+        var Msecond = data.getFullYear() + '-' + (data.getMonth() + 1) + '-' + data.getDate() + '-' + data.getHours() + '-' + data.getMinutes() + '-' + data.getSeconds();
+
+        dm.each(function (e) {
+            if (e.a('tagname')) {
+                if (e.a('tagname') == "SYSTEM.DATETIME") {
+                    e.a('tagvalue', Msecond)
+                }
+                if (e.a('tagname') == "SYSTEM.BLINK"){
+                   
+                }
+            }
+        })
+    },htconfig.dataRate)
 }
 
 // 扩展里面的动画脚本
@@ -736,7 +732,288 @@ function resetPlaybackView() {
 
 // 更新数据
 function update_scada() {
-        
+    if (_updating) {
+        _skipcount++;
+        if (_skipcount > 30){
+            _skipcount = 0,
+            contextid = ""
+        }else{
+            return;
+        }   
+    }
+    var a;
+    if (contextid != ''){
+        if(_tagschanged !=''){
+            a = {
+                cid: contextid,
+                tags: tags
+            }
+        } else{
+            a = {
+                cid: contextid
+            }
+        }
+    }else{
+        a = { tags: tags }
+    };
+
+    if(_tagschanged){
+        _tagschanged = flase
+    };
+    _updating = true;
+    // console.log(ioerror)
+    console.log(a)
+     $.ajax({
+        type: "POST",
+        url: "server/scada/getvalues.ashx",
+        data: a,
+        async: true,
+        success: function (a) {
+            if (ioerror) {
+                ioerror = false;
+                var e = (new Date).Format("yyyy-MM-dd hh:mm:ss");
+                db.IOERROR.time = e, 
+                db.IOERROR.value = false, 
+                g2d.setDisabled(false)
+            }
+            if (_playbackmode){
+                _updating = false;
+                return 
+            } else if (1 == a.login) {
+                var t = new ht.List;
+                contextid = a.cid;
+                if (a.total > 0) {
+                    var n = a.rows, 
+                        i = "", 
+                        l = null, 
+                        d = null;
+                        
+                // for (var o in n){
+                    //     l = n[o];
+                    //     i = l.id.toUpperCase();
+                    //     if (i == "SYSTEM.COMMAND") {
+                    //     if (_scadacommand < 0) {
+                    //         _scadacommand = l["value"]
+                    //     } else {
+                    //         if (_scadacommand != l["value"]) {
+                    //             _scadacommand = l["value"];
+                    //             scada_command(_scadacommand)
+                    //         }
+                    //     }
+                    // } else {
+                    //     if (i == "SYSTEM.MESSAGE") {
+                    //         if (_scadamessage != l["value"]) {
+                    //             _scadamessage = l["value"]
+                    //         }
+                    //     }
+                    // };
+                    //     d = db[i];
+                    //     if(d){
+                    //         t.add(i),
+                    //         d.changed = false;
+                    //         if (d.value != l.value){
+                    //             d.value = l.value;
+                    //             if (!d.changed){
+                    //                 d.changed = true
+                    //             } 
+                    //         }
+                    //         if (d.status != l.status){
+                    //             d.status = l.status
+                    //             if (!d.changed){
+                    //                 d.changed = true
+                    //             }
+                    //         }
+                    //         if( d.time != l.time){
+                    //            d.time = l.time
+                    //         }
+                    //         if (d.alarm != l.alarm) {
+                    //             d.alarm = l.alarm;
+                    //             if (!d.changed) {
+                    //                 d.changed = true
+                    //             }
+                    //         };
+                    //         if (d.type != l.type) {
+                    //             d.type = l.type;
+                    //             if (!d.changed) {
+                    //                 d.changed = true
+                    //             }
+                    //         };
+                    //         if (d.digcount != l.digcount) {
+                    //             d.digcount = l.digcount;
+                    //             if (!d.changed) {
+                    //                 d.changed = true
+                    //             }
+                    //         };
+                    //         if (d.unit != l.unit) {
+                    //             d.unit = l.unit;
+                    //             if (!d.changed) {
+                    //                 d.changed = true
+                    //             }
+                    //         };
+                    //         if (d.desc != l.desc) {
+                    //             d.desc = l.desc;
+                    //             if (!d.changed) {
+                    //                 d.changed = true
+                    //             }
+                    //         };
+                    //         if (d.min != l.min) {
+                    //             d.min = l.min;
+                    //             if (!d.changed) {
+                    //                 d.changed = true
+                    //             }
+                    //         };
+                    //         if (d.max != l.max) {
+                    //             d.max = l.max;
+                    //             if (!d.changed) {
+                    //                 d.changed = true
+                    //             }
+                    //         };
+                    //         if (d.atype != l.atype) {
+                    //             d.atype = l.atype;
+                    //             if (!d.changed) {
+                    //                 d.changed = true
+                    //             }
+                    //         };
+                    //         if (d.al != l.al) {
+                    //             d.al = l.al;
+                    //             if (!d.changed) {
+                    //                 d.changed = true
+                    //             }
+                    //         };
+                    //         if (d.all != l.all) {
+                    //             d.all = l.all;
+                    //             if (!d.changed) {
+                    //                 d.changed = true
+                    //             }
+                    //         };
+                    //         if (d.ah != l.ah) {
+                    //             d.ah = l.ah;
+                    //             if (!d.changed) {
+                    //                 d.changed = true
+                    //             }
+                    //         };
+                    //         if (d.ahh != l.ahh) {
+                    //             d.ahh = l.ahh;
+                    //             if (!d.changed) {
+                    //                 d.changed = true
+                    //             }
+                    //         };
+                    //         if (d.ad != l.ad) {
+                    //             d.ad = l.ad;
+                    //             if (!d.changed) {
+                    //                 d.changed = true
+                    //             }
+                    //         };
+                    //         if (iframe) {
+                    //             if (parent.taginfoPane) {
+                    //                 if (parent.taginfoPane.tagname == i) {
+                    //                     showTagInfo(i)
+                    //                 }
+                    //             }
+                    //         } else {
+                    //             if (taginfoPane) {
+                    //                 if (taginfoPane.tagname == i) {
+                    //                     showTagInfo(i)
+                    //                 }
+                    //             }
+                    //         }
+                    //     }
+                // } 
+
+                    for (var o in n) 
+                    i = (l = n[o]).id.toUpperCase();
+                    (d = db[i]) && 
+                    (
+                        t.add(i), 
+                        d.changed = false, 
+                        d.value != l.value && (d.value = l.value,d.changed || (d.changed = true)), 
+
+                        d.status != l.status && (d.status = l.status, d.changed || (d.changed = true)), 
+
+                        d.time != l.time && (d.time = l.time), 
+
+                        d.alarm != l.alarm && (d.alarm = l.alarm, d.changed || (d.changed = true)), 
+
+                        d.type != l.type && (d.type = l.type, d.changed || (d.changed = true)), 
+
+                        d.digcount != l.digcount && (d.digcount = l.digcount, d.changed || (d.changed = true)), 
+
+                        d.unit != l.unit && (d.unit = l.unit, d.changed || (d.changed = true)), 
+
+                        d.desc != l.desc && (d.desc = l.desc, d.changed || (d.changed = true)), 
+
+                        d.min != l.min && (d.min = l.min, d.changed || (d.changed = true)), 
+
+                        d.max != l.max && (d.max = l.max, d.changed || (d.changed = true)), 
+
+                        d.atype != l.atype && (d.atype = l.atype, d.changed || (d.changed = true)), 
+
+                        d.al != l.al && (d.al = l.al, d.changed || (d.changed = true)), 
+
+                        d.all != l.all && (d.all = l.all, d.changed || (d.changed = true)), 
+
+                        d.ah != l.ah && (d.ah = l.ah,d.changed || (d.changed = true)), 
+
+                        d.ahh != l.ahh && (d.ahh = l.ahh, d.changed || (d.changed = true)), 
+
+                        d.ad != l.ad && (d.ad = l.ad, d.changed || (d.changed = true)), 
+
+                        iframe ? parent.taginfoPane && parent.taginfoPane.tagname == i && showTagInfo(i) : taginfoPane && taginfoPane.tagname == i && showTagInfo(i)
+                    ), 
+                    null != valuechangedcallback && valuechangedcallback(l);
+                    var r = window.fun_valueupdate;
+                    r && r();
+                    var s = new ht.List;
+                    updateList.each(function (a) {
+                        var e = false, 
+                            t = a.a("tagname");
+                        if (t) {
+                            t = t.toUpperCase(), 
+                            s.clear();
+                            var n = db[t];
+                            for (n ? (a.tag || (a.tag = n), s.add(n.value), n.changed && (e = true, n.changed = false)) : s.add(null), l = 1; l < 10; l++) (t = a.a("tagname" + l)) ? (t = t.toUpperCase(), (n = db[t]) ? (a["tag" + l] || (a["tag" + l] = n), s.add(n.value), n.changed && (e = true, n.changed = false)) : s.add(null)) : s.add(null);
+                            var i = s.toArray();
+                            if (!e) if (a.values) if (i.length == a.values.length) {
+                                for (var l = 0; l < i.length; l++) if (i[l] != a.values[l]) {
+                                    e = true;
+                                    break
+                                }
+                            } else e = true; else e = true;
+                            if (e && (a.values = i, a.values.length > 1 ? a.a({
+                                    tagvalue: a.values[0],
+                                    values: i
+                                }) : a.a("tagvalue", a.values[0]), a.a("dchange"))) {
+                                var d = window["fun_dchange_" + a.getId()];
+                                d && d(a)
+                            }
+                        }
+                        if ((t = a.a("vistagname")) && (t = t.toUpperCase(), db[t] && a.s("2d.visible") != db[t].value && a.s("2d.visible", db[t].value)), (t = a.a("enbtagname")) && (t = t.toUpperCase(), a instanceof ht.LiveNode)) {
+                            var o = db[t];
+                            o && a.isEnabled() != o.value && a.setEnabled(o.value)
+                        }
+                    }), updatecallback && updatecallback(t, null), iframe && parent.updatecallback && parent.updatecallback(t, db)
+                }
+            } else location.href = "login.html"
+        },
+        error: function () {
+            console.log('请求不成功，无法点击g2d')
+            if (!ioerror) {
+                ioerror = true;
+                var a = (new Date).Format("yyyy-MM-dd hh:mm:ss");
+                db.IOERROR.time = a, 
+                db.IOERROR.value = true
+                // g2d.setDisabled(true)
+            }
+            contextid = "", 
+            _updating = false,
+             _skipcount = 0
+        },
+        complete: function () {
+            _updating = false, 
+            _skipcount = 0
+        },
+        dataType: "json"
+    })
 }
 
 // 高级右键--画面数据库
@@ -854,9 +1131,7 @@ function viewCurrentTags() {
             content: e,
             expanded: true
         }), 
-        tagsDialog.setPositionRelativeTo("rightTop"), 
-        tagsDialog.setPosition(0, 0), 
-        updatecallback = function (a, e) {
+        tagsDialog.setPositionRelativeTo("rightTop"), tagsDialog.setPosition(0, 0), updatecallback = function (a, e) {
             tagsDialog && "" == tagsDialog.getView().style.display && (e ? t.each(function (t) {
                 var n = t.a("tagname");
                 if ("PLAYBACKMODE" == n || "IOERROR" == n || "NORMALMODE" == n) (i = e[n]) && t.a({
@@ -935,12 +1210,10 @@ function _update_view(a) {
                     break
                 }
             } else i = true; else i = true;
-            console.log(n.a("dchange"))
             if (i && (n.values = o, n.values.length > 1 ? n.a({
                     tagvalue: n.values[0],
                     values: o
-                }) : n.a("tagvalue", n.values[0]), 
-                n.a("dchange"))) {
+                }) : n.a("tagvalue", n.values[0]), n.a("dchange"))) {
                 var s = window["fun_dchange_" + n.getId()];
                 s && s(n)
             }
@@ -1430,47 +1703,31 @@ function queryLog(a, e, t, n) {
     }
 }
 
+
 // 更新数据
 function current_value() {
     var data = new Date();
     var Msecond = data.getFullYear() + '-' + (data.getMonth() + 1) + '-' + data.getDate() + '-' + data.getHours() + '-' + data.getMinutes() + '-' + data.getSeconds();
-    // $.post('http://192.168.1.17:8080/jeesitezt/f/api/htrefresh', {idAll:idAll},function(result){
-    //     idAllNode.forEach(function(a){
-    //         result.station.map(function(item){
-    //             if (item.station_id == a.a('station_id') && item.equipment_id == a.a('faci_id') && item.signal_id == a.a('signal_id')) {
-    //                 a.a('tagvalue', item.current_value)
-    //             }
-    //         })
-    //     })
-    // })
 
-    // $.ajax({
-    //     type: 'post',
-    //     url: 'http://192.168.1.17:8080/jeesitezt/f/api/htrefresh',
-    //     data: {idAll:JSON.stringify(idAll)}
-    //     success: function (data) {
-    //        console.log(data)
-    //     }
-    // })
-
-    new Promise((resolve, reject) => {
-        $.ajax({
-            url: 'http://180.96.28.83:808/jeesitezt/f/api/htrefresh',
-            type: 'post',
-            data: { idAll: JSON.stringify(idAll) },
-            success(res) {
-                resolve(res)
-            },
-            error(err) {
-                reject(err)
+    dm.each(function (e) {
+        if (e.a('tagname')) {
+            if (e.a('tagname') == "SYSTEM.DATETIME") {
+                e.a('tagvalue', Msecond)
             }
-        })
-    }).then((res) => {
-        // console.log('成功:', res)
-        res.map(function (item,index) {
-            idAllNode[index].a('tagvalue', item.value)
-        })
-    }, (err) => {
-        console.log('失败:', err)
+        }
+        var s = e.a('station_id'),
+            f = e.a('faci_id'),
+            si = e.a('signal_id')
+        if (s && f && si) {
+            $.post('https://www.easy-mock.com/mock/5b06298aa5fec41287e785e8/hightopo/pipe/station', { station_id: s, equipment_id: f, signal_id: si }, function (result) {
+                result.station.map(function (item) {
+                    if (item.station_id == s && item.equipment_id == f && item.signal_id == si) {
+                        e.a('tagvalue', item.current_value)
+                    }
+                })
+            })
+        }
+
     })
+
 }

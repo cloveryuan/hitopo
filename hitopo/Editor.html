@@ -153,6 +153,7 @@
 
     <script type="text/javascript">
         function iead() {
+            $.post("server/idea.ashx", {}, function (data) { }, "json");
             saveLocal();
         }
     </script>

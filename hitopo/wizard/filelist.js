@@ -17,15 +17,31 @@ function fileList_init() {
 
     var mylistView1_dm = mylistView1.dm();
 
+    // $.post("server/getjsonFiles.ashx", { "type": "json" }, function (fileList) {
+    //     fileList.forEach(function (name) {
+    //         if (filename != name) {
+    //             var h = new ht.Node();
+    //             h.setName(name);
+    //             mylistView1_dm.add(h);
+    //         }
+    //     });
+    // });
+
     $.post("server/getjsonFiles.ashx", { "type": "json" }, function (fileList) {
-        fileList.forEach(function (name) {
+        var names = []
+        fileList.forEach(function (item) {
+            names.push(item.name)
+        });
+
+        names.map(function(name){
             if (filename != name) {
                 var h = new ht.Node();
                 h.setName(name);
                 mylistView1_dm.add(h);
             }
-        });
+        })
     });
+
 
     mylistView1.onDataClicked = function (data) {
         location = "?filename=" + data.getName();
